@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/sachin26049/techwizapp/issues"
   },
-  "homepage": "https://github.com/sachin26049/techwizapp#readme"
+  "homepage": "https://github.com/sachin26049/techwizapp#readme",
+  "devDependencies": {
+    "@angular/cli": "^1.6.4"
+  }
 }
