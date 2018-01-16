@@ -9,16 +9,20 @@ import {RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 
-const appRoutes:Routes= [
-  {path:'',component:HomepageComponent}
-  
+const appRoutes: Routes = [
+  {path: '' , component: HomepageComponent},
+  {path: '' , component: HomepageComponent},
 ];
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    NavbarComponent
+    NavbarComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
