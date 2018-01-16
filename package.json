@@ -1,22 +1,30 @@
 {
-  "name": "meanauthapp",
+  "name": "techwizapp",
   "version": "1.0.0",
-  "description": "MEAN stack authentication app",
+  "description": "food ordering and recommendation for Restaurant",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app"
   },
-  "dependencies":{
-    "express":"*",
-    "mongoose":"*",
-    "bcryptjs":"*",
-    "cors":"*",
-    "jsonwebtoken":"*",
-    "body-parser":"*",
-    "passport":"*",
-    "passport-jwt":"*"
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
   },
-  "author": "Brad Traversy",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sachin26049/techwizapp.git"
+  },
+  "author": "techwiz team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sachin26049/techwizapp/issues"
+  },
+  "homepage": "https://github.com/sachin26049/techwizapp#readme"
 }

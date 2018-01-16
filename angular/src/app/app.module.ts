@@ -14,8 +14,10 @@ import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   {path: '' , component: HomepageComponent},
-  {path: '' , component: HomepageComponent},
+  {path: 'login' , component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,6 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     RouterModule.forRoot(appRoutes)
 
   ],
