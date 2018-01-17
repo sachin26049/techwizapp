@@ -25,7 +25,6 @@
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },
-<<<<<<< HEAD
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sachin26049/techwizapp.git"
@@ -38,7 +37,7 @@
   "homepage": "https://github.com/sachin26049/techwizapp#readme",
   "devDependencies": {
     "@angular/cli": "^1.6.4"
-=======
+
   "devDependencies": {
     "@angular/cli": "1.6.1",
     "@angular/compiler-cli": "^5.0.0",
@@ -59,6 +58,6 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.4.2"
->>>>>>> a3db7f5dab197fdddd1d4c23a1c08891f69b0898
+
   }
 }
