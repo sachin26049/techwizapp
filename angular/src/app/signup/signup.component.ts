@@ -17,10 +17,10 @@ export class SignupComponent implements OnInit {
   password: String;
 
   constructor(
-    private validateService: ValidateService,
+    /*private validateService: ValidateService,
     private flashMessage: FlashMessagesService,
     private authService: AuthService,
-    private router: Router
+    private router: Router*/
   ) { }
 
   ngOnInit() {
@@ -34,7 +34,7 @@ onRegisterSubmit() {
      };
 
     // Required Fields
-    if ( !this.validateService.validateRegister(user)) {
+    /*if ( !this.validateService.validateRegister(user)) {
       this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
@@ -54,7 +54,7 @@ onRegisterSubmit() {
         this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
         this.router.navigate(['/register']);
       }
-    });
+    });*/
 
   }
 
