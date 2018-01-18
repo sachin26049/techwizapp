@@ -12,6 +12,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 
+import {ValidateService} from './services/validate.service';
+import {AuthService} from './services/auth.service';
+import {FlashMessagesModule} from 'angular2-flash-messages';
+
 const appRoutes: Routes = [
   {path: '' , component: HomepageComponent},
   {path: 'login' , component: LoginComponent},
@@ -29,10 +33,10 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
-
+    RouterModule.forRoot(appRoutes),
+    FlashMessagesModule
   ],
-  providers: [],
+  providers: [ValidateService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
