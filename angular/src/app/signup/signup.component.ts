@@ -17,24 +17,26 @@ export class SignupComponent implements OnInit {
   password: String;
 
   constructor(
-    /*private validateService: ValidateService,
+    private validateService: ValidateService,
     private flashMessage: FlashMessagesService,
     private authService: AuthService,
-    private router: Router*/
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
-onRegisterSubmit() {
+
+    onSignupSubmit() {
+    console.log('1');
     const user = {
       name: this.name,
       email: this.email,
       username: this.username,
       password: this.password
      };
-
+  console.log(user);
     // Required Fields
-    /*if ( !this.validateService.validateRegister(user)) {
+    if ( !this.validateService.validateRegister(user)) {
       this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
@@ -44,17 +46,17 @@ onRegisterSubmit() {
       this.flashMessage.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
-
+console.log('trying');
     // Register user
     this.authService.registerUser(user).subscribe(data => {
-      if (data.success) {
+      if (data['success']) {
         this.flashMessage.show('You are now registered and can log in', {cssClass: 'alert-success', timeout: 3000});
         this.router.navigate(['/login']);
       } else {
         this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
         this.router.navigate(['/register']);
       }
-    });*/
+    });
 
   }
 
