@@ -14,12 +14,14 @@ import { LoginComponent } from './login/login.component';
 
 import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
+import { MenuComponent } from './menu/menu.component';
 
 
 const appRoutes: Routes = [
   {path: '' , component: HomepageComponent},
   {path: 'login' , component: LoginComponent},
   {path: 'signup', component: SignupComponent},
+  {path: 'menu', component: MenuComponent},
 ];
 
 @NgModule({
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
     HomepageComponent,
     NavbarComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
