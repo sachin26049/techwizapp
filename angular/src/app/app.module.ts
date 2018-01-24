@@ -5,7 +5,9 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import {FlashMessagesModule} from 'angular2-flash-messages';
-
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatTabsModule} from '@angular/material/tabs';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -38,7 +40,10 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     FlashMessagesModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NoopAnimationsModule,
+    MatButtonModule, MatCheckboxModule,
+    MatTabsModule
     ],
   providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
