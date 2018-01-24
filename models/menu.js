@@ -8,14 +8,21 @@ const MenuSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  des: {
-    type: String
+  type: {
+    type: String,
+    required: true
   },
   name: {
     type: String,
     required: true
+  },
+  des:{
+    type: String
+  },
+  keywords:{
+    type: [String]
   }
-});
+},{ collection : 'menu' });
 
 const Menu = module.exports = mongoose.model('Menu', MenuSchema);
 

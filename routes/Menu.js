@@ -8,7 +8,8 @@ router.post('/add', (req, res, next) => {
   let newFood = new Menu({
     name: req.body.name,
     price: req.body.price,
-    des: req.body.des
+    des: req.body.des,
+    type:req.body.type
   });
 
   Menu.addFood(newFood, (err, food) => {
