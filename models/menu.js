@@ -24,12 +24,6 @@ const MenuSchema = mongoose.Schema({
   }
 },{ collection : 'menu' });
 
-const TypeSchema = mongoose.Schema({
-  type: {
-    type: String,
-    required: true
-  }
-},{ collection : 'type' });
 
 const Menu = module.exports = mongoose.model('Menu', MenuSchema);
 
@@ -53,9 +47,3 @@ Menu.find({},callback);
 //console.log(callback);
 }
 
-const Type = module.exports = mongoose.model('type',TypeSchema);
-module.exports.Load1 =function(callback)
-{
-Type.find({},callback);
-//console.log(callback);
-}

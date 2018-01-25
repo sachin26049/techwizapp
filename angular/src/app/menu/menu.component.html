@@ -1,6 +1,6 @@
 <div *ngIf="Menu">
 <mat-tab-group class="demo-tab-group" [(selectedIndex)]="selectedTabIndex">
-  <mat-tab *ngFor="let x of t;let k=index" label={{x}} >
+  <mat-tab *ngFor="let x of type;let k=index" label={{x}} >
     
     <mat-accordion id={{k}}>
   <mat-expansion-panel *ngFor="let y of Menu;let i=index" >

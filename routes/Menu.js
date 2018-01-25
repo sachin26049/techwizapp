@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const config = require('../config/database');
 const Menu = require('../models/Menu');
+const type = require('../models/type');
 
 // Register
 router.post('/add', (req, res, next) => {
@@ -37,7 +38,7 @@ Menu.Load((err,menu)=>{
 
 router.get('/LoadType', (req, res, next) => {
 
-  Menu.Load1((err,type)=>{
+  type.Load1((err,type)=>{
     if(err){
       res.json({success: false, msg:'Failed to load'});
     } else {
