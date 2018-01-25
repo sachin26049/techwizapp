@@ -28,7 +28,7 @@ Menu.Load((err,menu)=>{
   if(err){
     res.json({success: false, msg:'Failed to load'});
   } else {
-    res.json(menu);
+    res.json({success :true,menu:menu});
   }
 });
 

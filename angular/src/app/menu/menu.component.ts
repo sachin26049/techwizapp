@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MenusService} from '../services/menus.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 t=["s","ss","sss","ssss"];
-  constructor() { }
+Menu:[Object];
+constructor(private MS: MenusService,) {
+
+ }
 
   ngOnInit() {
-  }
+    this.MS.getMenu().subscribe(data => {
+    if(data['success'])
+    {
+      console.log("hhh");
+    this.Menu=data['menu'];
+    //console.log(data['menu']);
+    console.log(this.Menu);
+    }
 
+
+  });
+  }
+  /*LoadMenu(){
+
+    this.MS.getMenu().subscribe(data => {
+    if(data['success'])
+    {
+    let Menu=data['menu'];
+    }
+
+
+  });
+}*/
 }

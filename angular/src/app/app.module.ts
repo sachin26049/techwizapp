@@ -8,15 +8,19 @@ import {FlashMessagesModule} from 'angular2-flash-messages';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
+
+
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { MenuComponent } from './menu/menu.component';
 
 import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
-import { MenuComponent } from './menu/menu.component';
+import {MenusService} from './services/menus.service';
 import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
@@ -43,9 +47,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NoopAnimationsModule,
     MatButtonModule, MatCheckboxModule,
-    MatTabsModule
+    MatTabsModule,
+    MatExpansionModule
     ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard,MenusService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
