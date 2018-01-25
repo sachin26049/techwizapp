@@ -8,4 +8,8 @@ export class MenusService {
 getMenu(){
   return this.http.get ('http://localhost:3000/menu/LoadMenu');
 }
+
+getType(){
+  return this.http.get ('http://localhost:3000/menu/LoadType');
+}
 }

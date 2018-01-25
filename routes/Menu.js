@@ -35,7 +35,18 @@ Menu.Load((err,menu)=>{
 
 });
 
+router.get('/LoadType', (req, res, next) => {
 
+  Menu.Load1((err,type)=>{
+    if(err){
+      res.json({success: false, msg:'Failed to load'});
+    } else {
+      res.json({success :true,type:type});
+    }
+  });
+  
+  
+  });
 
 
 module.exports = router;
