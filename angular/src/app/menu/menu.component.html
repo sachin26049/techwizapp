@@ -1,9 +1,11 @@
 <div *ngIf="Menu">
 <mat-tab-group class="demo-tab-group" [(selectedIndex)]="selectedTabIndex">
-  <mat-tab *ngFor="let x of type;let k=index" label={{x}} >
-    
+  <mat-tab *ngFor="let x of type;let k=index" label={{x.type}} >
     <mat-accordion id={{k}}>
-  <mat-expansion-panel *ngFor="let y of Menu;let i=index" >
+      <ng-container *ngFor="let y of Menu;let i=index" >
+          <div *ngIf = "y.type==x.type">
+  <mat-expansion-panel>
+      
     <mat-expansion-panel-header>
       <mat-panel-title style="width:80%">
         {{y.name}}
@@ -12,11 +14,11 @@
         <i class="fa fa-inr" aria-hidden="true" style="margin-top:2px"></i>{{y.price}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-
-    <p>Description{{i+1}}:{{y.des}}</p>
+    <p>Description :{{y.des}}</p>
   </mat-expansion-panel>
+</div>
+</ng-container>
 </mat-accordion>
-
   </mat-tab>
 
 </mat-tab-group>
