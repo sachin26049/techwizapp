@@ -7,7 +7,7 @@ import {MenusService} from '../services/menus.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-t=["s","ss","sss","ssss"];
+type:[Object];
 Menu:[Object];
 constructor(private MS: MenusService,) {
 
@@ -20,7 +20,19 @@ constructor(private MS: MenusService,) {
       console.log("hhh");
     this.Menu=data['menu'];
     //console.log(data['menu']);
-    console.log(this.Menu);
+    //console.log(this.Menu);
+    }
+
+
+  });
+
+  this.MS.getType().subscribe(data => {
+    if(data['success'])
+    {
+      console.log("hhh");
+    this.type=data['type'];
+    //console.log(data['menu']);
+    console.log(this.type);
     }
 
 

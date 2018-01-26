@@ -24,6 +24,7 @@ const MenuSchema = mongoose.Schema({
   }
 },{ collection : 'menu' });
 
+
 const Menu = module.exports = mongoose.model('Menu', MenuSchema);
 
 module.exports.getFoodById = function(id, callback){
@@ -45,3 +46,4 @@ module.exports.Load =function(callback)
 Menu.find({},callback);
 //console.log(callback);
 }
+
