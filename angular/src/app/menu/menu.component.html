@@ -12,9 +12,12 @@
       </mat-panel-title>
       <mat-panel-description>
         <i class="fa fa-inr" aria-hidden="true" style="margin-top:2px"></i>{{y.price}}
+        
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>Description :{{y.des}}</p>
+    <button (click)="add(i)" type="button">Add</button>
+      <p>  {{msg}}</p>
   </mat-expansion-panel>
 </div>
 </ng-container>

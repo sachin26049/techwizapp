@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MenusService} from '../services/menus.service';
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-menu',
@@ -9,8 +10,12 @@ import {MenusService} from '../services/menus.service';
 export class MenuComponent implements OnInit {
 type:[Object];
 Menu:[Object];
-constructor(private MS: MenusService,) {
-
+count: number[] = [];
+msg="";
+constructor(private MS: MenusService,
+  private flashMessage: FlashMessagesService
+) {
+  
  }
 
   ngOnInit() {
@@ -37,6 +42,14 @@ constructor(private MS: MenusService,) {
 
 
   });
+  }
+  add(i:number){
+    this.msg="";
+    this.count[i]=1;
+    this.msg=""+this.count[i]+i;
+    this.flashMessage.show('You are now logged in', {
+      cssClass: 'alert-success',
+      timeout: 5000});
   }
   /*LoadMenu(){
 
