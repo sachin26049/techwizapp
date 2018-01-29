@@ -1,31 +1,5 @@
 <div *ngIf="Menu">
 <mat-tab-group class="demo-tab-group" [(selectedIndex)]="selectedTabIndex">
-<<<<<<< HEAD
-  <mat-tab *ngFor="let x of type;let k=index" label={{x.type}} >
-    <mat-accordion id={{k}}>
-      <ng-container *ngFor="let y of Menu;let i=index" >
-          <div *ngIf = "y.type==x.type">
-  <mat-expansion-panel>
-      
-    <mat-expansion-panel-header>
-      <mat-panel-title style="width:80%">
-        {{y.name}}
-      </mat-panel-title>
-      <mat-panel-description>
-        <i class="fa fa-inr" aria-hidden="true" style="margin-top:2px"></i>{{y.price}}
-        
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>Description :{{y.des}}</p>
-    <button (click)="add(i)" type="button">Add</button>
-      <p>  {{msg}}</p>
-  </mat-expansion-panel>
-</div>
-</ng-container>
-</mat-accordion>
-  </mat-tab>
-
-=======
     <mat-tab *ngFor="let x of type;let k=index" label={{x.type}} >
         <div *ngIf="selectedTabIndex == k">
           <mat-accordion>
@@ -52,6 +26,5 @@
             </mat-accordion>
           </div>
         </mat-tab>
->>>>>>> 488332edb5a79f74a8d8dd7a907c269b49391639
 </mat-tab-group>
 </div>
