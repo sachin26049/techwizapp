@@ -22,6 +22,7 @@ import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
 import {MenusService} from './services/menus.service';
 import { AuthGuard } from './guards/auth.guard';
+import { OrdersComponent } from './services/orders/orders.component';
 
 const appRoutes: Routes = [
   {path: '' , component: HomepageComponent},
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     SignupComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
