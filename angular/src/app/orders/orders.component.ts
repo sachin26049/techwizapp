@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MenusService} from '../services/menus.service';
 
 @Component({
   selector: 'app-orders',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-
-  constructor() { }
+  Menu:[Object];
+  Count:[Number];
+  constructor(private MS: MenusService) { }
 
   ngOnInit() {
+    this.MS.getMenu().subscribe(data=>{
+      this.Menu=data['menu'];
+    });
+    this.Count=this.MS.getCount();
   }
 
 }
