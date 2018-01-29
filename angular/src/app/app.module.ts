@@ -9,7 +9,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import {NgcFloatButtonModule} from 'ngc-float-button';
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -22,13 +22,14 @@ import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
 import {MenusService} from './services/menus.service';
 import { AuthGuard } from './guards/auth.guard';
-import { OrdersComponent } from './services/orders/orders.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const appRoutes: Routes = [
   {path: '' , component: HomepageComponent},
   {path: 'login' , component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'menu', component: MenuComponent, canActivate: [AuthGuard]},
+  {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     SignupComponent,
     LoginComponent,
     MenuComponent,
-    OrdersComponent
+    OrdersComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ const appRoutes: Routes = [
     NoopAnimationsModule,
     MatButtonModule, MatCheckboxModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+      NgcFloatButtonModule
     ],
   providers: [ValidateService, AuthService, AuthGuard,MenusService],
   bootstrap: [AppComponent]
