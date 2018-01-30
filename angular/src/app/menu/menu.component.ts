@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MenusService} from '../services/menus.service';
-<<<<<<< HEAD
-import {FlashMessagesService} from 'angular2-flash-messages';
-=======
 import {Router} from '@angular/router';
 
->>>>>>> 8a62325d0290438f17455b1e96f1ebc78dfc07f3
 
 @Component({
   selector: 'app-menu',

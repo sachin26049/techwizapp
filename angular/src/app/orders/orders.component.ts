@@ -18,4 +18,19 @@ export class OrdersComponent implements OnInit {
     this.Count=this.MS.getCount();
   }
 
+  incrCount(index:number){
+    this.Count[index]=(Number)(this.Count[index])+1;
+    console.log(index + ":" + this.Count[index]);
+}
+
+
+decrCount(index:number)
+{
+    if(this.Count[index]!=0)
+    {
+      this.Count[index]=(Number)(this.Count[index])-1;
+      console.log(index + ":" + this.Count[index]);
+    }
+}
+
 }
