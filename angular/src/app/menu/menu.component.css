@@ -1,0 +1,15 @@
+ngc-float-button  {
+
+    top: 80%;
+    left: 90%;
+    position: absolute;
+}
+
+.mat-icon {
+  width: 40px;
+}
+
+.fab-toggle
+{
+  width: 40px;
+}

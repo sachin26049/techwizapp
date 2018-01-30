@@ -1,4 +1,7 @@
 <div *ngIf="Count">
+  <ngc-float-button icon="menu" (click)="goToMenu()" [direction]="right">
+    </ngc-float-button>
+
 <mat-accordion>
   <ng-container *ngFor="let y of Menu;let i=index" >
       <div *ngIf = "Count[i]>0">

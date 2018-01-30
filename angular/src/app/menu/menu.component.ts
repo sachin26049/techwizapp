@@ -17,22 +17,11 @@ constructor(private MS: MenusService,private router: Router) {
  }
 
   ngOnInit() {
-            this.MS.getMenu().subscribe(data => {
-            if(data['success'])
-            {
-              //console.log("hhh");
-            this.Menu=data['menu'];
-            //console.log(data['menu']);
-            //console.log(this.Menu);
-            }
 
-            this.Count=[new Number(this.Menu.length)];
+            this.Menu=this.MS.getMenu();
 
-            for(let i=0;i<this.Menu.length;i++)
-            {
-            this.Count[i]=0;
-            }
-              });
+
+            this.Count=this.MS.getCount();
 
               this.MS.getType().subscribe(data => {
                 if(data['success'])
