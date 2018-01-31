@@ -27,6 +27,18 @@ this.MS.setOrders(this.Menu,this.Count);
  }
   
   });
+
+  this.MS.getType().subscribe(data => {
+    if(data['success'])
+    {
+      //console.log("hhh");
+    this.type=data['type'];
+    //console.log(data['menu']);
+    //console.log(this.type);
+    }
+
+
+  });
 }
   
 
@@ -37,17 +49,7 @@ this.MS.setOrders(this.Menu,this.Count);
 
             //this.Count=this.MS.getCount();
 
-              this.MS.getType().subscribe(data => {
-                if(data['success'])
-                {
-                  //console.log("hhh");
-                this.type=data['type'];
-                //console.log(data['menu']);
-                //console.log(this.type);
-                }
-
-
-              });
+             
 
   }
 
