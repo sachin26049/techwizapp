@@ -21,6 +21,18 @@ router.post('/add', (req, res, next) => {
     }
   });
 });
+router.post('/delete', (req, res, next) => {
+  let name= req.body.name;
+    
+
+  Menu.Delete(name, (err, food) => {
+    if(err){
+      res.json({success: false, msg:'Failed to delete'});
+    } else {
+      res.json({success: true, msg:'Food deleted'});
+    }
+  });
+});
 
 
 router.get('/LoadMenu', (req, res, next) => {
