@@ -54,11 +54,11 @@ export class OrdersComponent implements OnInit {
       let x= +this.Count[i];
       let y=this.Menu[i];
       let z=+y.price;
-      console.log(x*z);  
+      //console.log(x*z);  
       if(z)
       {    
       this.sum=this.sum + x*z;
-      console.log(this.sum); 
+      //console.log(this.sum); 
       }
     }
     }
