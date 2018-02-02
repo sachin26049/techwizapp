@@ -13,43 +13,62 @@ type:[Object];
 Menu:[Object];
 Count:[Number];
 constructor(private MS: MenusService,private router: Router) {
-  this.MS.getMenu().subscribe(data=>{
-    if(data['success'])
-    {
-      this.Menu=data['menu'];
-      console.log(this.Menu);
-      this.Count=[new Number(this.Menu.length)];
-for(let i=0;i<this.Menu.length;i++)
-{
-  this.Count[i]=0;
-}
-this.MS.setOrders(this.Menu,this.Count);
+
+
+
  }
-  
-  });
-
-  this.MS.getType().subscribe(data => {
-    if(data['success'])
-    {
-      //console.log("hhh");
-    this.type=data['type'];
-    //console.log(data['menu']);
-    //console.log(this.type);
-    }
-
-
-  });
-}
-  
 
   ngOnInit() {
+            console.log('1');
+            if(this.MS.Count==undefined)
+            {
+              console.log("2");
+              this.MS.getMenuH().subscribe(data => {
+              if(data['success'])
+              {
+                console.log("3");
+              this.Menu=data['menu'];
+              this.Count=[new Number(this.Menu.length)];
 
-           
+              for(let i=0;i<this.Menu.length;i++)
+              {
+              this.Count[i]=0;
+              }
+              console.log("4"+this.Menu);
+              this.MS.setOrders(this.Menu,this.Count);
+              }
+            });
+            this.MS.getType().subscribe(data => {
+              if(data['success'])
+              {
+                //console.log("hhh");
+              this.type=data['type'];
+              //console.log(data['menu']);
+              //console.log(this.type);
+              }
 
 
-            //this.Count=this.MS.getCount();
+            });
+            }
+            else
+            {
+            this.Menu=this.MS.getMenu();
 
-             
+          //  console.log(this.Menu);
+            this.Count=this.MS.getCount();
+
+              this.MS.getType().subscribe(data => {
+                if(data['success'])
+                {
+                  //console.log("hhh");
+                this.type=data['type'];
+                //console.log(data['menu']);
+                //console.log(this.type);
+                }
+
+
+              });
+            }
 
   }
 

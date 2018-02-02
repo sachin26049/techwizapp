@@ -47,3 +47,9 @@ Menu.find({},callback);
 //console.log(callback);
 }
 
+module.exports.Delete =function(name,callback)
+{
+Menu.deleteOne({ "name" :name } ,callback);
+//console.log(callback);
+}
+
