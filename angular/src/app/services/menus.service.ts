@@ -4,13 +4,13 @@ import {HttpClient , HttpHeaders} from '@angular/common/http';
 @Injectable()
 export class MenusService {
   Menu:[any];
-  Count:[any];
-  c:number;
+  Count:[Number];
 
-  constructor(private http: HttpClient) { 
-  }
+  constructor(private http: HttpClient) {
 
-getMenu(){
+}
+
+getMenuH(){
   return this.http.get ('http://localhost:3000/menu/LoadMenu');
 }
 
@@ -20,10 +20,18 @@ getType(){
 
 setOrders(m:[Object],c:[Number])
 {
-console.log(5);  
 this.Menu=m;
 this.Count=c;
 }
 
+getMenu()
+{
+return this.Menu;
+}
+
+getCount()
+{
+return this.Count;
+}
 
 }
