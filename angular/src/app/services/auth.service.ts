@@ -34,6 +34,13 @@ loggedIn() {
     this.user = user;
   }
 
+  getUser()
+  {
+    //console.log("1"+this.user);
+    //console.log(localStorage.getItem('user'));
+    return localStorage.getItem('user');
+  }
+
   logout() {
     this.authToken = null;
     this.user = null;
