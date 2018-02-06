@@ -19,14 +19,14 @@ constructor(private MS: MenusService,private router: Router) {
  }
 
   ngOnInit() {
-            console.log('1');
+            //console.log('1');
             if(this.MS.Count==undefined)
             {
-              console.log("2");
+              //console.log("2");
               this.MS.getMenuH().subscribe(data => {
               if(data['success'])
               {
-                console.log("3");
+                //console.log("3");
               this.Menu=data['menu'];
               this.Count=[new Number(this.Menu.length)];
 
@@ -34,7 +34,7 @@ constructor(private MS: MenusService,private router: Router) {
               {
               this.Count[i]=0;
               }
-              console.log("4"+this.Menu);
+              //console.log("4"+this.Menu);
               this.MS.setOrders(this.Menu,this.Count);
               }
             });
@@ -75,7 +75,7 @@ constructor(private MS: MenusService,private router: Router) {
   //functions
   incrCount(index:number){
       this.Count[index]=(Number)(this.Count[index])+1;
-      console.log(index + ":" + this.Count[index]);
+      //console.log(index + ":" + this.Count[index]);
   }
 
 
@@ -84,7 +84,7 @@ constructor(private MS: MenusService,private router: Router) {
       if(this.Count[index]!=0)
       {
         this.Count[index]=(Number)(this.Count[index])-1;
-        console.log(index + ":" + this.Count[index]);
+       // console.log(index + ":" + this.Count[index]);
       }
   }
 

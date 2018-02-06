@@ -23,6 +23,8 @@ import {AuthService} from './services/auth.service';
 import {MenusService} from './services/menus.service';
 import { AuthGuard } from './guards/auth.guard';
 import { OrdersComponent } from './orders/orders.component';
+import {OrdersService} from './services/orders.service';
+import { OrderstatusComponent } from './orderstatus/orderstatus.component';
 
 const appRoutes: Routes = [
   {path: '' , component: HomepageComponent},
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'menu', component: MenuComponent, canActivate: [AuthGuard]},
   {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]},
+  {path:'OrderStatus', component: OrderstatusComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -41,6 +44,7 @@ const appRoutes: Routes = [
     LoginComponent,
     MenuComponent,
     OrdersComponent,
+    OrderstatusComponent,
 
   ],
   imports: [
@@ -55,7 +59,7 @@ const appRoutes: Routes = [
     MatExpansionModule,
       NgcFloatButtonModule
     ],
-  providers: [ValidateService, AuthService, AuthGuard,MenusService],
+  providers: [ValidateService, AuthService, AuthGuard,MenusService,OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
