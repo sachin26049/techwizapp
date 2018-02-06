@@ -23,6 +23,7 @@ const app = express();
 
 const users = require('./routes/users');
 const menu=require('./routes/Menu');
+const orders=require('./routes/orders');
 // Port Number
 const port = 3000;
 
@@ -43,7 +44,7 @@ require('./config/passport')(passport);
 
 app.use('/users', users);
 app.use('/menu',menu);
-
+app.use('/orders',orders);
 // Index Route
 app.get('/', (req, res) => {
   res.send('Invalid Endpoint');

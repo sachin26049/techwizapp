@@ -11,17 +11,23 @@ import {OrdersService} from '../services/orders.service'
 })
 export class OrderstatusComponent implements OnInit {
   Menu:[any];
-  Count:[Number];
+  Count:Number[];
+  
   constructor(private MS: MenusService,private router:Router,
     private AS:AuthService,private OS:OrdersService) { }
 
   ngOnInit() {
-    this.Menu=this.MS.getMenu();
+    this.MS.getMenuH().subscribe(data=>{
+    if(data['success'])
+    {
+      this.Menu=data['menu'];
+      //console.log(this.Menu);
+    
 
-    this.Count=this.OS.getCurrentCount();
-    console.log(this.Count);
-    console.log(this.Menu);
-
-  }
-
+    this.Count=this.OS.getTotalCount();
+   // console.log(this.Count);
+   // console.log(this.Menu);
+    }
+    });
+}
 }

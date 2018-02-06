@@ -5,12 +5,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class OrdersService {
 
-  Count:[any];
+  Count:any[];
   order:any;
-  TCount:[Number];
+  TCount:Number[];
   constructor(private http: HttpClient) { }
 
-  StoreOrder(order:any,c:[Number])
+  StoreOrder(order:any,c:Number[])
   {
   
     localStorage.setItem('order', JSON.stringify(order));
