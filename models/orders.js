@@ -7,6 +7,7 @@ const orderSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  timestamp:{ type : Date, default: Date.now },
   orders:[{
       foodname:{
         type :String,

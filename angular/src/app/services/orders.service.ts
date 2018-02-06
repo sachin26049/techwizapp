@@ -47,5 +47,10 @@ export class OrdersService {
     return this.Count;
   }
 
+  finalOrder(order:any)
+  {
+    return this.http.post('http://localhost:3000/orders/add',order);
+  }
+
 
 }
