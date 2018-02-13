@@ -55,7 +55,6 @@ constructor(private MS: MenusService,private router: Router) {
             this.Menu=this.MS.getMenu();
 
           //  console.log(this.Menu);
-
             this.Count=this.MS.getCount();
 
               this.MS.getType().subscribe(data => {
