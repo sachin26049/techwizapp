@@ -21,9 +21,17 @@ mongoose.connection.on('error', (err) => {
 
 const app = express();
 
+
+//setup socket 
+var socketServer = require('http').Server(app);
+var io = require('socket.io')(socketServer);
+
+//routing
 const users = require('./routes/users');
 const menu=require('./routes/Menu');
 const orders=require('./routes/orders');
+
+
 // Port Number
 const port = 3000;
 
@@ -42,9 +50,12 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
+//using respective files in routes
 app.use('/users', users);
 app.use('/menu',menu);
 app.use('/orders',orders);
+
+
 // Index Route
 app.get('/', (req, res) => {
   res.send('Invalid Endpoint');
@@ -54,3 +65,10 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log('Server started on port '+port);
 });
+
+// socket io connection funtions
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
+

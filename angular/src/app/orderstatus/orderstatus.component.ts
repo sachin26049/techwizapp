@@ -67,7 +67,7 @@ checkOut()
     this.OS.finalOrder(order).subscribe(data=>{
       console.log(data);
     });
-    this.AS.logout();
-    this.router.navigate(['/login']);
+    //this.AS.logout();
+    //this.router.navigate(['/login']);
 }
 }

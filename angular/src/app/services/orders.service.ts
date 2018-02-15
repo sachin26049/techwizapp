@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient , HttpHeaders} from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { Socket } from 'ng-socket-io';
 
 @Injectable()
 export class OrdersService {
@@ -46,7 +47,10 @@ export class OrdersService {
   {
     return this.Count;
   }
-
+  reset()
+  {
+    this.Count=undefined;
+  }
   finalOrder(order:any)
   {
     return this.http.post('http://localhost:3000/orders/add',order);

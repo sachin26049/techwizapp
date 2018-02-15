@@ -10,6 +10,9 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {NgcFloatButtonModule} from 'ngc-float-button';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
