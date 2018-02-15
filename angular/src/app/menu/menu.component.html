@@ -1,6 +1,5 @@
-<div *ngIf="Menu">
+<div *ngIf="type&&Menu">
   <ngc-float-button icon="add_shopping_cart" (click)="goToOrders()" >
-    orders
     </ngc-float-button>
 <mat-tab-group class="demo-tab-group" >
     <mat-tab *ngFor="let x of type;let k=index" label={{x.type}} >

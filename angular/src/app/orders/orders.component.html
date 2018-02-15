@@ -2,20 +2,53 @@
   <ngc-float-button icon="menu" (click)="goToMenu()" [direction]="right">
     </ngc-float-button>
 
-
+  <div class="jumbotron" >
   <ng-container *ngFor="let y of Menu;let i=index" >
-      <div *ngIf = "Count[i]>0">
-        
-              {{y.name}}
-            
-              <i class="fa fa-inr" aria-hidden="true" style="margin-top:2px"></i>{{y.price}}
-            
-          <p>Description :{{y.des}}</p>
-          <button (click)="decrCount(i)">-</button>
-          <input readonly [(ngModel)]="Count[i]">
-          <button (click)="incrCount(i)">+</button>
-         
-      </div>
+      
+          <div class="container-fluid" *ngIf = "Count[i]>0">
+            <div class="row">
+              <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+               <h3> {{y.name}}  </h3>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> 
+                <h3><i class="fa fa-inr" aria-hidden="true" style="margin-top:2px">  
+                </i>{{y.price}}
+                </h3>
+              </div>
+            </div>
+            <div class="row" style="margin-top:2px">
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <button (click)="decrCount(i)" class="btn btn-default
+                 btn-circle" style="font-size:15px;
+                border-color:white;background:#00D800;color:white">-</button>
+                <input readonly [(ngModel)]="Count[i]" class="form-group-sm" 
+                style="width:30px;border:none;font-size:15px;
+                background:white;margin:0px;">
+                <button (click)="incrCount(i)" class="btn btn-default
+                btn-circle" style="font-size:15px;
+               border-color:white;background:#00D800;color:white">+</button>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <p><span style="font-size:15px">X</span>
+                  <input readonly [(ngModel)]="Menu[i].price" class="form-group-sm" 
+                  style="width:40px;border:none;font-size:25px;
+                  background:transparent;margin:0px;">
+                  <span style="font-size:25px;font-style:bold">=</span></p>
+                  
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                  <h4><i class="fa fa-inr" aria-hidden="true" style="margin-top:2px">  
+                    </i>{{y.price*Count[i]}}
+                    </h4>
+              </div>
+            </div>
+          </div>
     </ng-container>
-  
+    <div class="row">
+      <h3 style="text-align:center">
+        <p>Total Amount:{{total()}}</p>
+      </h3>
+    </div>
+  </div>
+
 </div>
