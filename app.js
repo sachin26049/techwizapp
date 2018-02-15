@@ -22,9 +22,7 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 
 
-//setup socket 
-var socketServer = require('http').Server(app);
-var io = require('socket.io')(socketServer);
+
 
 //routing
 const users = require('./routes/users');
@@ -62,13 +60,21 @@ app.get('/', (req, res) => {
 });
 
 // Start Server
-app.listen(port, () => {
+server=app.listen(port, () => {
   console.log('Server started on port '+port);
 });
+
+//setup socket 
+
+var io = require('socket.io').listen(server);
 
 // socket io connection funtions
 io.on('connection', function(socket){
   console.log('a user connected');
+  socket.on('message',function(msg){
+    console.log(msg);
+    });
 });
+
 
 

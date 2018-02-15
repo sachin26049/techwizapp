@@ -28,6 +28,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { OrdersComponent } from './orders/orders.component';
 import {OrdersService} from './services/orders.service';
 import { OrderstatusComponent } from './orderstatus/orderstatus.component';
+import { OrderSocketService } from './services/order-socket.service';
 
 const appRoutes: Routes = [
   {path: '' , component: HomepageComponent},
@@ -60,9 +61,10 @@ const appRoutes: Routes = [
     MatButtonModule, MatCheckboxModule,
     MatTabsModule,
     MatExpansionModule,
-      NgcFloatButtonModule
+      NgcFloatButtonModule,
+      SocketIoModule.forRoot(config) 
     ],
-  providers: [ValidateService, AuthService, AuthGuard,MenusService,OrdersService],
+  providers: [ValidateService, AuthService, AuthGuard,MenusService,OrdersService,OrderSocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
