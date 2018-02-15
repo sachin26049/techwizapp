@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="jumbotron" style="margin-top:10%;align:center">
+  <h1 style="text-align:center">Modify Food</h1>      
+  
+</div>
+<form (ngSubmit)="onSubmit()">
+
+<div class="form-group">
+		<label for="pre1" style=" font-size:20px;margin-top:5%;align:center">Select Food Type</label>
+		<select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="type">
+		  <ng-container *ngFor="let y of Type;let j=index" >
+			  <option value="{{Type[j].type}}">{{Type[j].type}}</option>
+		  </ng-container>
+		</select>
+		
+	<!--	<div *ngIf="Menu&&type"> -->
+		  
+	  <select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="food">
+		  
+		<ng-container *ngFor="let x of Menu ;let i=index" >
+		 
+			  <option value="{{Menu[i].name}}">{{Menu[i].name}}</option>
+		 
+			</ng-container>
+		</select>
+	
+	  
+		
+	>
+		
+	
+	 <label style="margin-top:5%;align:center">Enter New Price</label>
+    <input type="text" name="name" class="form-control" style="margin-top:5%;align:center" [(ngModel)]="price">
+	</div>
+	<input type="submit" class="btn btn-primary" value="Submit" style="margin-top:5%">
+	</form>
+	<br>
+	{{type}}
+	{{food}}
+	{{price}}

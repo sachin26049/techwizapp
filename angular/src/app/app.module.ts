@@ -23,6 +23,16 @@ import {AuthService} from './services/auth.service';
 import {MenusService} from './services/menus.service';
 import { AuthGuard } from './guards/auth.guard';
 import { OrdersComponent } from './orders/orders.component';
+import { AdminComponent } from './admin/admin.component';
+import { ManagemenuComponent } from './managemenu/managemenu.component';
+import { ViewfeedbackComponent } from './viewfeedback/viewfeedback.component';
+import { AddfoodComponent } from './addfood/addfood.component';
+import { ModifyfoodComponent } from './modifyfood/modifyfood.component';
+import { DeletefoodComponent } from './deletefood/deletefood.component';
+import { DeletetypeComponent } from './deletetype/deletetype.component';
+import { AddtypeComponent } from './addtype/addtype.component';
+import { ModifytypeComponent } from './modifytype/modifytype.component';
+import { AdminmenuService } from './services/adminmenu.service';
 
 const appRoutes: Routes = [
   {path: '' , component: HomepageComponent},
@@ -30,6 +40,15 @@ const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'menu', component: MenuComponent, canActivate: [AuthGuard]},
   {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]},
+  {path: 'admin' , component: AdminComponent},
+  {path: 'managemenu' , component: ManagemenuComponent},
+  {path: 'addfood' , component: AddfoodComponent},
+  {path: 'modifyfood' , component: ModifyfoodComponent},
+  {path: 'deletefood' , component: DeletefoodComponent},
+  {path: 'deletetype' , component: DeletetypeComponent},
+  {path: 'addtype' , component: AddtypeComponent},
+  {path: 'modifytype' , component: ModifytypeComponent},
+  {path: 'viewfeedback' , component: ViewfeedbackComponent},
 ];
 
 @NgModule({
@@ -41,6 +60,15 @@ const appRoutes: Routes = [
     LoginComponent,
     MenuComponent,
     OrdersComponent,
+    AdminComponent,
+    ManagemenuComponent,
+    ViewfeedbackComponent,
+    AddfoodComponent,
+    ModifyfoodComponent,
+    DeletefoodComponent,
+    DeletetypeComponent,
+    AddtypeComponent,
+    ModifytypeComponent,
 
   ],
   imports: [
@@ -55,7 +83,7 @@ const appRoutes: Routes = [
     MatExpansionModule,
       NgcFloatButtonModule
     ],
-  providers: [ValidateService, AuthService, AuthGuard,MenusService],
+  providers: [ValidateService, AuthService, AuthGuard,MenusService, AdminmenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -34,6 +34,25 @@ router.post('/delete', (req, res, next) => {
   });
 });
 
+router.put('/update', (req, res, next) => {
+  let name= req.body.name;
+  let newFood = new Menu({
+    name: req.body.name,
+    price: req.body.price,
+    des: req.body.des,
+    type:req.body.type
+  });
+
+
+  Menu.Update(name,newFood,{}, (err, food) => {
+    if(err){
+      res.json({success: false, msg:'Failed to delete'});
+    } else {
+      res.json({success: true, msg:'Food deleted'});
+    }
+  });
+});
+
 
 router.get('/LoadMenu', (req, res, next) => {
 
@@ -47,6 +66,8 @@ Menu.Load((err,menu)=>{
 
 
 });
+
+
 
 router.get('/LoadType', (req, res, next) => {
 
