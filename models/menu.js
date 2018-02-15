@@ -53,3 +53,17 @@ Menu.deleteOne({ "name" :name } ,callback);
 //console.log(callback);
 }
 
+module.exports.Update =function(name,newFood,options,callback)
+{ 
+  var update={
+    type: newFood.type,
+    name: newFood.name,
+price: newFood.price,
+des:newFood.des
+
+  }
+Menu.findOneAndUpdate({ "name" :name } ,update,options,callback);
+//console.log(callback);
+}
+
+

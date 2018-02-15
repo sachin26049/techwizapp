@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="jumbotron" style="margin-top:10%;align:center">
+  <h1 style="text-align:center">Delete Type</h1>      
+  
+</div>
+<form (ngSubmit)="onSignupSubmit()">
+<div class="form-group">
+	
+	<label for="pre1" style=" font-size:20px;margin-top:5%;align:center">Select Food Type</label>
+	<select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="type">
+    <option value="c">chinese</option>
+    <option value="p">punjabi</option>
+    <option value="s">south indian</option>
+    <option value="m">maharashtrian</option>
+	</select>
+	
+	<input type="submit" class="btn btn-primary" value="Submit">
+	</div>
+	</form>
+	<br>
+	{{type}}
+	
+  
+  
+  
