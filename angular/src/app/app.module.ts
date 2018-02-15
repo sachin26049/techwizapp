@@ -10,6 +10,9 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {NgcFloatButtonModule} from 'ngc-float-button';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -23,6 +26,7 @@ import {AuthService} from './services/auth.service';
 import {MenusService} from './services/menus.service';
 import { AuthGuard } from './guards/auth.guard';
 import { OrdersComponent } from './orders/orders.component';
+
 import { AdminComponent } from './admin/admin.component';
 import { ManagemenuComponent } from './managemenu/managemenu.component';
 import { ViewfeedbackComponent } from './viewfeedback/viewfeedback.component';
@@ -34,12 +38,18 @@ import { AddtypeComponent } from './addtype/addtype.component';
 import { ModifytypeComponent } from './modifytype/modifytype.component';
 import { AdminmenuService } from './services/adminmenu.service';
 
+import {OrdersService} from './services/orders.service';
+import { OrderstatusComponent } from './orderstatus/orderstatus.component';
+import { OrderSocketService } from './services/order-socket.service';
+
+
 const appRoutes: Routes = [
   {path: '' , component: HomepageComponent},
   {path: 'login' , component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'menu', component: MenuComponent, canActivate: [AuthGuard]},
   {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]},
+
   {path: 'admin' , component: AdminComponent},
   {path: 'managemenu' , component: ManagemenuComponent},
   {path: 'addfood' , component: AddfoodComponent},
@@ -49,6 +59,9 @@ const appRoutes: Routes = [
   {path: 'addtype' , component: AddtypeComponent},
   {path: 'modifytype' , component: ModifytypeComponent},
   {path: 'viewfeedback' , component: ViewfeedbackComponent},
+
+  {path:'OrderStatus', component: OrderstatusComponent, canActivate: [AuthGuard]}
+
 ];
 
 @NgModule({
@@ -60,6 +73,7 @@ const appRoutes: Routes = [
     LoginComponent,
     MenuComponent,
     OrdersComponent,
+
     AdminComponent,
     ManagemenuComponent,
     ViewfeedbackComponent,
@@ -69,6 +83,9 @@ const appRoutes: Routes = [
     DeletetypeComponent,
     AddtypeComponent,
     ModifytypeComponent,
+
+    OrderstatusComponent,
+
 
   ],
   imports: [
@@ -81,9 +98,13 @@ const appRoutes: Routes = [
     MatButtonModule, MatCheckboxModule,
     MatTabsModule,
     MatExpansionModule,
-      NgcFloatButtonModule
+      NgcFloatButtonModule,
+      SocketIoModule.forRoot(config) 
     ],
-  providers: [ValidateService, AuthService, AuthGuard,MenusService, AdminmenuService],
+
+
+  providers: [ValidateService, AuthService, AuthGuard,MenusService,OrdersService,OrderSocketService,AdminmenuService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
