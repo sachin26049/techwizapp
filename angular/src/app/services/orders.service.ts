@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient , HttpHeaders} from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import {OrderSocketService} from '../services/order-socket.service';
 
 @Injectable()
 export class OrdersService {
@@ -8,12 +9,12 @@ export class OrdersService {
   Count:any[];
   order:any;
   TCount:Number[];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private OSS:OrderSocketService) { }
 
   StoreOrder(order:any,c:Number[])
   {
   
-    localStorage.setItem('order', JSON.stringify(order));
+    //localStorage.setItem('order', JSON.stringify(order));
     this.order=order;
     //console.log(c);
     this.TCount=c;
@@ -28,6 +29,7 @@ export class OrdersService {
     {
       this.Count[i]+=c[i];
     }
+    this.OSS.sendMessage(order);
   }
   }
 
@@ -47,6 +49,10 @@ export class OrdersService {
     return this.Count;
   }
 
+  reset()
+  {
+    this.Count=undefined;
+  }
   finalOrder(order:any)
   {
     return this.http.post('http://localhost:3000/orders/add',order);

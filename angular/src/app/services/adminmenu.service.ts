@@ -1,0 +1,44 @@
+
+import { Injectable } from '@angular/core';
+import {HttpClient , HttpHeaders} from '@angular/common/http';
+
+@Injectable()
+
+export class AdminmenuService {
+
+    food: any;
+  constructor(private http: HttpClient) {
+
+}
+
+addFood(food)
+{
+
+
+    return this.http.post ('http://localhost:3000/menu/add', food, {
+    headers: new HttpHeaders().set('content-type', 'application/json'),
+  });
+}
+
+updateFood(food)
+{
+
+
+    return this.http.put ('http://localhost:3000/menu/update', food, {
+    headers: new HttpHeaders().set('content-type', 'application/json'),
+  });
+}
+
+deleteFood(food)
+{
+
+
+    return this.http.post ('http://localhost:3000/menu/delete', food, {
+    headers: new HttpHeaders().set('content-type', 'application/json'),
+  });
+}
+
+
+
+
+}
