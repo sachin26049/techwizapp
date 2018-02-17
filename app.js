@@ -67,12 +67,17 @@ server=app.listen(port, () => {
 //setup socket 
 
 var io = require('socket.io').listen(server);
-
+var chefid;
 // socket io connection funtions
 io.on('connection', function(socket){
-  console.log('a user connected');
+  console.log(socket.id+"  "+'connected');
+  socket.on("chef",function(msg){
+    chefid=socket.id;
+    console.log("chef  "+'connected');
+  });
   socket.on('message',function(msg){
     console.log(msg);
+    io.to(chefid).emit("order",msg);
     });
 });
 

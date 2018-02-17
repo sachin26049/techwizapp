@@ -29,8 +29,9 @@ export class OrdersService {
     {
       this.Count[i]+=c[i];
     }
-    this.OSS.sendMessage(order);
+    
   }
+  this.OSS.sendMessage(order);
   }
 
   getCompleteOrder()
