@@ -1,0 +1,50 @@
+<div *ngIf="count">
+  <div class="jumbotron" >
+    <ng-container *ngFor="let y of menu;let i=index" >
+        
+            <div class="container-fluid" *ngIf = "count[i]>0">
+              <div class="row">
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                 <h3> {{y.name}}  </h3>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"> 
+                  <h3><i class="fa fa-inr" aria-hidden="true" style="margin-top:2px">  
+                  </i>{{y.price*count[i]}}
+                  </h3>
+                </div>
+              </div>
+              
+                
+            </div>
+      </ng-container>
+      <div class="row">
+        <h3 style="text-align:center">
+          <p style="font-size:30px;font-style:bold">Total Amount: {{total()}}</p>
+        </h3>
+      </div>
+      </div>
+      <div class="form-group">
+        <label>Card Number:</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Expiry Date:</label>
+        <input type="month" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Name on the Card:</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>CVV:</label>
+        <input type="password" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Amount:</label>
+        <input type="text" class="form-control" value="{{sum}}" readonly>
+      </div>
+      <div>
+      <button class="btn btn-lg" style="background-color:#00D800;
+      color:white" (click)="pay()">Pay</button>
+      </div>
+</div>

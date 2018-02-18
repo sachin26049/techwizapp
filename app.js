@@ -77,11 +77,7 @@ io.on('connection', function(socket){
   });
   socket.on('message',function(msg){
     console.log(msg);
-<<<<<<< HEAD
-    socket.emit('orders',msg);
-=======
     io.to(chefid).emit("order",msg);
->>>>>>> 8cd0a0ce8315fb4872f18bea2260169abb6d5472
     });
 });
 
