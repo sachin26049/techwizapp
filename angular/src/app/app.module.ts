@@ -41,7 +41,9 @@ import { AdminmenuService } from './services/adminmenu.service';
 import {OrdersService} from './services/orders.service';
 import { OrderstatusComponent } from './orderstatus/orderstatus.component';
 import { OrderSocketService } from './services/order-socket.service';
-
+import { ChefComponent } from './chef/chef.component';
+import { ChefSocketService } from './chef/chef-socket.service';
+import { ChefsService } from './chef/chefs.service';
 
 const appRoutes: Routes = [
   {path: '' , component: HomepageComponent},
@@ -59,7 +61,7 @@ const appRoutes: Routes = [
   {path: 'addtype' , component: AddtypeComponent},
   {path: 'modifytype' , component: ModifytypeComponent},
   {path: 'viewfeedback' , component: ViewfeedbackComponent},
-
+  {path:'chef', component:ChefComponent},
   {path:'OrderStatus', component: OrderstatusComponent, canActivate: [AuthGuard]}
 
 ];
@@ -86,6 +88,8 @@ const appRoutes: Routes = [
 
     OrderstatusComponent,
 
+    ChefComponent,
+
 
   ],
   imports: [
@@ -103,7 +107,7 @@ const appRoutes: Routes = [
     ],
 
 
-  providers: [ValidateService, AuthService, AuthGuard,MenusService,OrdersService,OrderSocketService,AdminmenuService],
+  providers: [ValidateService, AuthService,ChefsService, AuthGuard,ChefSocketService,MenusService,OrdersService,OrderSocketService,AdminmenuService],
 
   bootstrap: [AppComponent]
 })

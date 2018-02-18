@@ -6,11 +6,15 @@ export class OrderSocketService {
 
   constructor(private socket: Socket) { }
   sendMessage(msg: any){
-    this.socket.emit("message", msg);
+    console.log("emit");
+    this.socket.emit("message", msg);   
 }
 getMessage() {
-  return this.socket
-      .fromEvent("order")
-      .map( data => {console.log(data)});
+  return this.socket.on('orderStatus',function(msg:any){
+  });
+      
+}
+close() {
+  this.socket.disconnect()
 }
 }
