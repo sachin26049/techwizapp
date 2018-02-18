@@ -95,10 +95,14 @@ io.on('connection', function(socket){
     var x=idList.find(function(element){
       return element.email==msg.userEmail;
     });
+    
+    //console.log("find:"+x.email+"  "+x.socket+" ");
+    //console.log(msg);
     if(x)
-    console.log("find:"+x.email+"  "+x.socket+" ");
-    console.log(msg);
+    {
+      console.log(msg);
     io.to(x.socket).emit("orderStatus",msg);
+    }
   });
   socket.on('placeOrder',function(msg){
     console.log(msg);

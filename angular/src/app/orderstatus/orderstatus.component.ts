@@ -3,7 +3,9 @@ import {MenusService} from '../services/menus.service';
 import {Router} from '@angular/router';
 import { log } from 'util';
 import {AuthService} from '../services/auth.service';
-import {OrdersService} from '../services/orders.service'
+import {OrdersService} from '../services/orders.service';
+import {OrderSocketService} from '../services/order-socket.service'
+
 
 
 @Component({
@@ -14,9 +16,10 @@ import {OrdersService} from '../services/orders.service'
 export class OrderstatusComponent implements OnInit {
   Menu:[any];
   Count:Number[];
-  
+  orders:[any]; 
+  orderStatus;
   constructor(private MS: MenusService,private router:Router,
-    private AS:AuthService,private OS:OrdersService) { }
+    private AS:AuthService,private OS:OrdersService,private OSS:OrderSocketService) { }
 
   ngOnInit() {
     this.MS.getMenuH().subscribe(data=>{
@@ -31,6 +34,14 @@ export class OrderstatusComponent implements OnInit {
    // console.log(this.Menu);
     }
     });
+
+    this.orders=this.OS.getCompleteOrder();
+    console.log(this.orders);
+    this.orderStatus=new Array();
+    this.OSS.getStatus().subscribe((order: any) => {
+    console.log(order);
+    this.orderStatus.push(order);
+  });
 }
 
 checkOut()

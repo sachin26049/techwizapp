@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ng-socket-io';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class OrderSocketService {
@@ -11,6 +12,15 @@ export class OrderSocketService {
 }
 init(username:any){
   this.socket.emit("user",username);
+}
+
+getStatus(){
+  return Observable.create((observer) => {
+    this.socket.on('orderStatus', (order) => {
+        console.log("new");
+        observer.next(order);
+    });
+});
 }
 
 close() {

@@ -95,6 +95,7 @@ decrCount(index:number)
     //console.log(orderArray);
    let order={
      userEmail:user.email,
+     orderId:++this.OS.orderId,
      orders:orderArray
     };
 
