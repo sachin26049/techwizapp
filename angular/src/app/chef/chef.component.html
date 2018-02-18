@@ -14,7 +14,8 @@
     </div>
   </div>
 </div>
-<div class="row" *ngFor="let x of orderList;let i=index">
+<div class="row" *ngFor="let x of orderList;let i=index" >
+  <div class="container" *ngIf="flag[i]<2">
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
   <h4>{{x.userEmail}}</h4>
   </div>
@@ -26,10 +27,14 @@
         <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
           <h4>{{y.Count}}</h4>
         </div>
-        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" id="i" *ngIf="flag[i]==0">
+
           <input type="number" [(ngModel)]="orderStatus[i][j]">
         </div>
+        
     </div>
-    <div class="row"><button class="btn btn-info" (click)="sendStatus(i)">SendStatus</button></div>
+    <div class="row"  *ngIf="flag[i]==0;else other"><button class="btn btn-info" (click)="sendStatus(i)">SendStatus</button></div>
+    <ng-template #other><button class="btn btn-info" (click)="OrderDeliverd(i)">OrderDeliverd</button></ng-template>
   </div>
+</div>
 </div>
