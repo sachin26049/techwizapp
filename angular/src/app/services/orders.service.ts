@@ -31,7 +31,8 @@ export class OrdersService {
     }
     
   }
-  this.OSS.sendMessage(order);
+  this.OSS.init(order.userEmail);
+  this.OSS.placeOrder(order);
   }
 
   getCompleteOrder()

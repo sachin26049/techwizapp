@@ -23,6 +23,10 @@ export class ChefSocketService {
       });
   });
   }
+  sendOrderStatus(status:any)
+  {
+    this.socket.emit("orderStatus",status);
+  }
 close() {
   this.socket.disconnect()
 }

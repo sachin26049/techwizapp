@@ -5,16 +5,15 @@ import { Socket } from 'ng-socket-io';
 export class OrderSocketService {
 
   constructor(private socket: Socket) { }
-  sendMessage(msg: any){
+  placeOrder(msg: any){
     console.log("emit");
-    this.socket.emit("message", msg);   
+    this.socket.emit("placeOrder", msg);   
 }
-getMessage() {
-  return this.socket.on('orderStatus',function(msg:any){
-  });
-      
+init(username:any){
+  this.socket.emit("user",username);
 }
+
 close() {
-  this.socket.disconnect()
+  this.socket.disconnect();
 }
 }

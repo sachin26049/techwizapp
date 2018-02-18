@@ -68,14 +68,39 @@ server=app.listen(port, () => {
 
 var io = require('socket.io').listen(server);
 var chefid;
+var idList=new Array();
 // socket io connection funtions
 io.on('connection', function(socket){
-  console.log(socket.id+"  "+'connected');
+  //console.log(socket.id+"  "+'connected');
   socket.on("chef",function(msg){
     chefid=socket.id;
     console.log("chef  "+'connected');
   });
-  socket.on('message',function(msg){
+
+  socket.on("user",function(msg){
+    console.log(msg+"  "+'connected');
+    let p={
+      "email":msg,
+      "socket":socket.id
+    };
+
+    idList.push(p);
+    /*var x=idList.find(function(element){
+      return element.email==msg;
+    });
+    console.log("find:"+x.email+"  "+x.socket);*/
+  });
+
+  socket.on("orderStatus",function(msg){
+    var x=idList.find(function(element){
+      return element.email==msg.userEmail;
+    });
+    if(x)
+    console.log("find:"+x.email+"  "+x.socket+" ");
+    console.log(msg);
+    io.to(x.socket).emit("orderStatus",msg);
+  });
+  socket.on('placeOrder',function(msg){
     console.log(msg);
     io.to(chefid).emit("order",msg);
     });
