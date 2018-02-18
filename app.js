@@ -73,6 +73,7 @@ io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('message',function(msg){
     console.log(msg);
+    socket.emit('orders',msg);
     });
 });
 

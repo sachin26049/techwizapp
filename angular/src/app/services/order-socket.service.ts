@@ -10,7 +10,7 @@ export class OrderSocketService {
 }
 getMessage() {
   return this.socket
-      .fromEvent("message")
-      .map( data => data);
+      .fromEvent("order")
+      .map( data => {console.log(data)});
 }
 }
