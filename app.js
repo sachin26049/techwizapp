@@ -5,7 +5,7 @@ const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database');
-
+const tempOrders=require('./models/tempOrders');
 // Connect To Database
 mongoose.connect(config.database);
 
@@ -131,6 +131,19 @@ var io = require('socket.io').listen(server);
       socket.on('placeOrder',function(msg){
         console.log(msg);
         io.to(chefid).emit("order",msg);
+        let order = new tempOrders({
+          email:msg.userEmail,
+          time:msg.timeStamp,
+          orderId:msg.orderId,
+          orders:msg.orders
+        });
+        tempOrders.addOrder(order, (err, food) => {
+          if(err){
+           console.log({success: false, msg:'Failed to Add'});
+          } else {
+            console.log({success: true, msg:'order Added'});
+          }
+        });
         });
 });
 

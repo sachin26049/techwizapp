@@ -32,6 +32,7 @@ export class ChefSocketService {
     var x={
       email:email,
       orderId:id,
+      time:new Date()
     }
     this.socket.emit("orderDeliverd",x);
   }

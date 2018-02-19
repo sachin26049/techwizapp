@@ -19,12 +19,12 @@ export class OrderstatusComponent implements OnInit {
   orders:[any]; 
   orderStatus;
   deliverd;
-  public now: Date = new Date();
+  //public now: Date = new Date();
   constructor(private MS: MenusService,private router:Router,
     private AS:AuthService,private OS:OrdersService,private OSS:OrderSocketService) { }
 
   ngOnInit() {
-    console.log(this.now);
+    //console.log(this.now);
     this.MS.getMenuH().subscribe(data=>{
       if(data['success'])
     {

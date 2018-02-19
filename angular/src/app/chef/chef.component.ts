@@ -11,7 +11,12 @@ export class ChefComponent implements OnInit {
 orderList:any[];
 orderStatus:any[];
 flag:any[];
-  constructor(private CS:ChefsService,private CSO:ChefSocketService) {}
+public now: Date = new Date();
+  constructor(private CS:ChefsService,private CSO:ChefSocketService) { 
+    setInterval(() => {
+      this.now = new Date();
+    }, 60);
+  }
 
   ngOnInit() {
     this.orderList=new Array();
@@ -35,13 +40,20 @@ flag:any[];
   {
     
     let orders=new Array();
+    console.log(this.now);
+    
     for(let j=0;j<this.orderList[i].orders.length;j++)
     {
+      var t=new Date();
+      t.setMinutes(t.getMinutes()+this.orderStatus[i][j]);
+      console.log(t);
       let x={
         "foodName":this.orderList[i].orders[j].foodname,
-        "Time":this.orderStatus[i][j]
+        "Time":t
       };  
       orders.push(x);
+      console.log(orders);
+      console.log(this.orderStatus[i][j]);
     }
     let order={
       "userEmail":this.orderList[i].userEmail,

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const config = require('../config/database');
 const Orders = require('../models/orders');
-
+const tempOrders=require('../models/tempOrders');
 
 // Register
 router.post('/add', (req, res, next) => {
@@ -21,7 +21,21 @@ router.post('/add', (req, res, next) => {
   });
 });
 
-
+router.post('/addtemp',(req,res,next)=>{
+    let order = new Orders({
+    email:req.body.userEmail,
+    time:req.body.timeStamp,
+    orderId:req.body.orderId,
+    orders:req.body.orders
+  });
+  tempOrders.addOrder(order, (err, food) => {
+    if(err){
+      res.json({success: false, msg:'Failed to Add'});
+    } else {
+      res.json({success: true, msg:'order Added'});
+    }
+  });
+});
 
 router.get('/LoadOrders', (req, res, next) => {
 
