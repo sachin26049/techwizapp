@@ -16,14 +16,13 @@ export class OrdersService {
   =new Array();
   this.deliverd=new Array();
   this.OSS.getStatus().subscribe((order: any) => {
-    console.log(order);
-    console.log("status");
-    this.orderStatus.push(order);
-    this.deliverd.push(0);
+    this.orderStatus[order.orderId-1]=order;
+    this.deliverd[order.orderId-1]=0;
+    console.log(this.orderStatus);
   });
 
   this.OSS.orderDelivered().subscribe((order: any) => {
-    console.log(order);
+    //console.log(order);
     //console.log("status");
     //this.orderStatus.push(order);
     this.deliverd[order.orderId-1]=1;
