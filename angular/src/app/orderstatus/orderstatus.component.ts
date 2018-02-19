@@ -18,12 +18,15 @@ export class OrderstatusComponent implements OnInit {
   Count:Number[];
   orders:[any]; 
   orderStatus;
+  deliverd;
+  //public now: Date = new Date();
   constructor(private MS: MenusService,private router:Router,
     private AS:AuthService,private OS:OrdersService,private OSS:OrderSocketService) { }
 
   ngOnInit() {
+    //console.log(this.now);
     this.MS.getMenuH().subscribe(data=>{
-    if(data['success'])
+      if(data['success'])
     {
       this.Menu=data['menu'];
       //console.log(this.Menu);
@@ -34,14 +37,31 @@ export class OrderstatusComponent implements OnInit {
    // console.log(this.Menu);
     }
     });
-
     this.orders=this.OS.getCompleteOrder();
-    console.log(this.orders);
-    this.orderStatus=new Array();
+    this.orderStatus=new Array(this.orders.length);
+    this.deliverd=new Array(this.orders.length);
+    this.orderStatus=this.OS.getStat();
+    this.deliverd=this.OS.getDeliveryStat();
+    console.log(this.orderStatus);
+    
+    //console.log(this.orders);
+    
+
     this.OSS.getStatus().subscribe((order: any) => {
-    console.log(order);
-    this.orderStatus.push(order);
+    //console.log(order);
+   // console.log("status");
+    this.orderStatus[order.orderId-1]=order;
+    this.deliverd[order.orderId-1]=0;
+    console.log(this.orderStatus);
   });
+  this.OSS.orderDelivered().subscribe((order: any) => {
+    //console.log(order);
+   // console.log("status");
+    //this.orderStatus.push(order);
+    this.deliverd[order.orderId-1]=1;
+    console.log(this.deliverd);
+  });
+
 }
 
 checkOut()

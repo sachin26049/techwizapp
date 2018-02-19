@@ -14,8 +14,11 @@ export class OrdersComponent implements OnInit {
   Menu:[any];
   Count:[Number];
   sum:number;
+  now: Date = new Date();
   constructor(private MS: MenusService,private router:Router,
-  private AS:AuthService,private OS:OrdersService) { }
+  private AS:AuthService,private OS:OrdersService) { setInterval(() => {
+    this.now = new Date();
+  }, 60);}
 
   ngOnInit() {
 
@@ -93,8 +96,11 @@ decrCount(index:number)
       }
     }
     //console.log(orderArray);
+    
+
    let order={
      userEmail:user.email,
+     timeStamp:this.now, 
      orderId:++this.OS.orderId,
      orders:orderArray
     };
