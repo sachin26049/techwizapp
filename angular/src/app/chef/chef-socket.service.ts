@@ -27,6 +27,14 @@ export class ChefSocketService {
   {
     this.socket.emit("orderStatus",status);
   }
+  sendDeliverdStatus(email:any,id:any)
+  {
+    var x={
+      email:email,
+      orderId:id,
+    }
+    this.socket.emit("orderDeliverd",x);
+  }
 close() {
   this.socket.disconnect()
 }

@@ -23,6 +23,15 @@ getStatus(){
 });
 }
 
+orderDelivered(){
+  return Observable.create((observer) => {
+    this.socket.on('orderDeliverd', (order) => {
+        console.log("newd");
+        observer.next(order);
+    });
+});
+}
+
 close() {
   this.socket.disconnect();
 }

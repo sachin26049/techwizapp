@@ -10,9 +10,30 @@ export class OrdersService {
   orders;
   TCount:Number[];
   orderId:number;
+  orderStatus;
+  deliverd;
+  constructor(private http: HttpClient,private OSS:OrderSocketService) { this.orders=new Array();this.orderId=0;this.orderStatus
+  =new Array();
+  this.deliverd=new Array();
+  this.OSS.getStatus().subscribe((order: any) => {
+    console.log(order);
+    console.log("status");
+    this.orderStatus.push(order);
+    this.deliverd.push(0);
+  });
 
-  constructor(private http: HttpClient,private OSS:OrderSocketService) { this.orders=new Array();this.orderId=0; }
+  this.OSS.orderDelivered().subscribe((order: any) => {
+    console.log(order);
+    //console.log("status");
+    //this.orderStatus.push(order);
+    this.deliverd[order.orderId-1]=1;
+  });
+}
 
+  getDeliveryStat()
+  {
+    return this.deliverd;
+  }
   StoreOrder(order:any,c:Number[])
   {
   
@@ -42,6 +63,11 @@ export class OrdersService {
    return this.orders; 
   }
 
+  
+  getStat()
+  {
+    return this.orderStatus;
+  }
   getCurrentCount()
   {
     //console.log("1"+this.TCount);

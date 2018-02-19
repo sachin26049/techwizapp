@@ -83,7 +83,16 @@ io.on('connection', function(socket){
       "email":msg,
       "socket":socket.id
     };
-
+    var x=idList.find(function(element){
+      return element.email==p.email;
+    });
+    if(x)
+    {
+      //console.log(y);
+      //var y=idList.findIndex(x);
+      x.socket=socket.id;
+    }
+    else
     idList.push(p);
     /*var x=idList.find(function(element){
       return element.email==msg;
@@ -101,7 +110,20 @@ io.on('connection', function(socket){
     if(x)
     {
       console.log(msg);
+      console.log("find:"+x.email+"  "+x.socket+" ");
     io.to(x.socket).emit("orderStatus",msg);
+    }
+  });
+
+  socket.on("orderDeliverd",function(msg){
+    var x=idList.find(function(element){
+      return element.email==msg.email;
+    });
+    if(x)
+    {
+      console.log(msg);
+      console.log("find:"+x.email+"  "+x.socket+" ");
+    io.to(x.socket).emit("orderDeliverd",msg);
     }
   });
   socket.on('placeOrder',function(msg){

@@ -18,6 +18,7 @@ export class OrderstatusComponent implements OnInit {
   Count:Number[];
   orders:[any]; 
   orderStatus;
+  deliverd;
   constructor(private MS: MenusService,private router:Router,
     private AS:AuthService,private OS:OrdersService,private OSS:OrderSocketService) { }
 
@@ -34,14 +35,30 @@ export class OrderstatusComponent implements OnInit {
    // console.log(this.Menu);
     }
     });
-
-    this.orders=this.OS.getCompleteOrder();
-    console.log(this.orders);
     this.orderStatus=new Array();
+    this.deliverd=new Array();
+    this.orderStatus=this.OS.getStat();
+    this.deliverd=this.OS.getDeliveryStat();
+    console.log(this.orderStatus);
+    this.orders=this.OS.getCompleteOrder();
+    //console.log(this.orders);
+    
+
     this.OSS.getStatus().subscribe((order: any) => {
-    console.log(order);
+    //console.log(order);
+   // console.log("status");
     this.orderStatus.push(order);
+    this.deliverd.push(0);
+    console.log(this.orderStatus);
   });
+  this.OSS.orderDelivered().subscribe((order: any) => {
+    //console.log(order);
+   // console.log("status");
+    //this.orderStatus.push(order);
+    this.deliverd[order.orderId-1]=1;
+    console.log(this.deliverd);
+  });
+
 }
 
 checkOut()

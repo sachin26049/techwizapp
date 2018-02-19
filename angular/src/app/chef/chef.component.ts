@@ -45,6 +45,7 @@ flag:any[];
     }
     let order={
       "userEmail":this.orderList[i].userEmail,
+      "orderId":this.orderList[i].orderId,
       "orders":orders
     }
     this.CSO.sendOrderStatus(order);
@@ -54,6 +55,7 @@ flag:any[];
   OrderDeliverd(i:any)
   {
     this.flag[i]=2;
+    this.CSO.sendDeliverdStatus(this.orderList[i].userEmail,this.orderList[i].orderId);
   }
   
 
