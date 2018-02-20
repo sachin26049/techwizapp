@@ -5,7 +5,7 @@ const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database');
-
+const tempOrders=require('./models/tempOrders');
 // Connect To Database
 mongoose.connect(config.database);
 
@@ -67,18 +67,84 @@ server=app.listen(port, () => {
 //setup socket 
 
 var io = require('socket.io').listen(server);
-var chefid;
-// socket io connection funtions
-io.on('connection', function(socket){
-  console.log(socket.id+"  "+'connected');
-  socket.on("chef",function(msg){
-    chefid=socket.id;
-    console.log("chef  "+'connected');
-  });
-  socket.on('message',function(msg){
-    console.log(msg);
-    io.to(chefid).emit("order",msg);
-    });
+  var chefid;
+  var idList=new Array();
+    // socket io connection funtions
+  io.on('connection', function(socket){
+    //console.log(socket.id+"  "+'connected');
+      socket.on("chef",function(msg){
+        chefid=socket.id;
+        console.log("chef  "+'connected');
+      });
+
+      socket.on("user",function(msg){
+          console.log(msg+"  "+'connected');
+          let p={
+            "email":msg,
+            "socket":socket.id
+          };
+          var x=idList.find(function(element){
+            return element.email==p.email;
+          });
+          if(x)
+          {
+            //console.log(y);
+            //var y=idList.findIndex(x);
+            x.socket=socket.id;
+          }
+          else
+           idList.push(p);
+          /*var x=idList.find(function(element){
+            return element.email==msg;
+          });
+          console.log("find:"+x.email+"  "+x.socket);*/
+      });
+
+      socket.on("orderStatus",function(msg){
+          var x=idList.find(function(element){
+            return element.email==msg.userEmail;
+          });
+        
+          //console.log("find:"+x.email+"  "+x.socket+" ");
+          //console.log(msg);
+          if(x)
+          {
+            console.log(msg);
+            console.log("find:"+x.email+"  "+x.socket+" ");
+            io.to(x.socket).emit("orderStatus",msg);
+          }
+      });
+
+      socket.on("orderDeliverd",function(msg){
+          var x=idList.find(function(element){
+              return element.email==msg.email;
+          });
+          if(x)
+          {
+            console.log(msg);
+            console.log("find:"+x.email+"  "+x.socket+" ");
+            io.to(x.socket).emit("orderDeliverd",msg);
+          }
+      });
+
+
+      socket.on('placeOrder',function(msg){
+        console.log(msg);
+        io.to(chefid).emit("order",msg);
+        let order = new tempOrders({
+          email:msg.userEmail,
+          time:msg.timeStamp,
+          orderId:msg.orderId,
+          orders:msg.orders
+        });
+        tempOrders.addOrder(order, (err, food) => {
+          if(err){
+           console.log({success: false, msg:'Failed to Add'});
+          } else {
+            console.log({success: true, msg:'order Added'});
+          }
+        });
+        });
 });
 
 

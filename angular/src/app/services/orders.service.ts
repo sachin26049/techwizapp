@@ -7,15 +7,37 @@ import {OrderSocketService} from '../services/order-socket.service';
 export class OrdersService {
 
   Count:any[];
-  order:any;
+  orders;
   TCount:Number[];
-  constructor(private http: HttpClient,private OSS:OrderSocketService) { }
+  orderId:number;
+  orderStatus;
+  deliverd;
+  constructor(private http: HttpClient,private OSS:OrderSocketService) { this.orders=new Array();this.orderId=0;this.orderStatus
+  =new Array();
+  this.deliverd=new Array();
+  this.OSS.getStatus().subscribe((order: any) => {
+    this.orderStatus[order.orderId-1]=order;
+    this.deliverd[order.orderId-1]=0;
+    console.log(this.orderStatus);
+  });
 
+  this.OSS.orderDelivered().subscribe((order: any) => {
+    //console.log(order);
+    //console.log("status");
+    //this.orderStatus.push(order);
+    this.deliverd[order.orderId-1]=1;
+  });
+}
+
+  getDeliveryStat()
+  {
+    return this.deliverd;
+  }
   StoreOrder(order:any,c:Number[])
   {
   
     //localStorage.setItem('order', JSON.stringify(order));
-    this.order=order;
+    this.orders.push(order);
     //console.log(c);
     this.TCount=c;
     //console.log("q"+this.TCount);
@@ -30,18 +52,24 @@ export class OrdersService {
       this.Count[i]+=c[i];
     }
     
-  }
-  this.OSS.sendMessage(order);
+    }
+  this.OSS.init(order.userEmail);
+  this.OSS.placeOrder(order);
   }
 
   getCompleteOrder()
   {
-   return JSON.parse(localStorage.getItem('order')); 
+   return this.orders; 
   }
 
+  
+  getStat()
+  {
+    return this.orderStatus;
+  }
   getCurrentCount()
   {
-    console.log("1"+this.TCount);
+    //console.log("1"+this.TCount);
     return this.TCount;
   }
 
@@ -54,6 +82,7 @@ export class OrdersService {
   {
     this.Count=undefined;
   }
+
   finalOrder(order:any)
   {
     return this.http.post('http://localhost:3000/orders/add',order);

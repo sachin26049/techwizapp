@@ -44,6 +44,7 @@ import { OrderSocketService } from './services/order-socket.service';
 import { ChefComponent } from './chef/chef.component';
 import { ChefSocketService } from './chef/chef-socket.service';
 import { ChefsService } from './chef/chefs.service';
+import { PaymentComponent } from './payment/payment.component';
 
 const appRoutes: Routes = [
   {path: '' , component: HomepageComponent},
@@ -62,7 +63,8 @@ const appRoutes: Routes = [
   {path: 'modifytype' , component: ModifytypeComponent},
   {path: 'viewfeedback' , component: ViewfeedbackComponent},
   {path:'chef', component:ChefComponent},
-  {path:'OrderStatus', component: OrderstatusComponent, canActivate: [AuthGuard]}
+  {path:'OrderStatus', component: OrderstatusComponent, canActivate: [AuthGuard]},
+  {path: 'payment', component: PaymentComponent},
 
 ];
 
@@ -89,6 +91,8 @@ const appRoutes: Routes = [
     OrderstatusComponent,
 
     ChefComponent,
+
+    PaymentComponent,
 
 
   ],

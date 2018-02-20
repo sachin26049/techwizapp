@@ -23,6 +23,19 @@ export class ChefSocketService {
       });
   });
   }
+  sendOrderStatus(status:any)
+  {
+    this.socket.emit("orderStatus",status);
+  }
+  sendDeliverdStatus(email:any,id:any)
+  {
+    var x={
+      email:email,
+      orderId:id,
+      time:new Date()
+    }
+    this.socket.emit("orderDeliverd",x);
+  }
 close() {
   this.socket.disconnect()
 }
