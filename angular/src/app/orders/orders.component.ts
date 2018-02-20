@@ -14,8 +14,11 @@ export class OrdersComponent implements OnInit {
   Menu:[any];
   Count:[Number];
   sum:number;
+  now: Date = new Date();
   constructor(private MS: MenusService,private router:Router,
-  private AS:AuthService,private OS:OrdersService) { }
+  private AS:AuthService,private OS:OrdersService) { setInterval(() => {
+    this.now = new Date();
+  }, 60);}
 
   ngOnInit() {
 
@@ -32,19 +35,19 @@ export class OrdersComponent implements OnInit {
   }
 
   incrCount(index:number){
-      this.Count[index]=(Number)(this.Count[index])+1;
+    this.Count[index]=(Number)(this.Count[index])+1;
+    console.log(index + ":" + this.Count[index]);
+}
+
+
+decrCount(index:number)
+{
+    if(this.Count[index]!=0)
+    {
+      this.Count[index]=(Number)(this.Count[index])-1;
       console.log(index + ":" + this.Count[index]);
-  }
-
-
-  decrCount(index:number)
-  {
-      if(this.Count[index]!=0)
-      {
-        this.Count[index]=(Number)(this.Count[index])-1;
-        console.log(index + ":" + this.Count[index]);
-      }
-  }
+    }
+}
 
   total()
   {
@@ -93,8 +96,12 @@ export class OrdersComponent implements OnInit {
       }
     }
     //console.log(orderArray);
+    
+
    let order={
      userEmail:user.email,
+     timeStamp:this.now, 
+     orderId:++this.OS.orderId,
      orders:orderArray
     };
 
