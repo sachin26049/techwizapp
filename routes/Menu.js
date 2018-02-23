@@ -3,6 +3,7 @@ const router = express.Router();
 const config = require('../config/database');
 const Menu = require('../models/Menu');
 const type = require('../models/type');
+const Recommend = require('../models/recommend');
 
 // Register
 router.post('/add', (req, res, next) => {
@@ -82,5 +83,18 @@ router.get('/LoadType', (req, res, next) => {
   
   });
 
+
+router.get('/RecommendedItems',(req,res,next)=>{
+  console.log('hfigh'+req);
+  Recommend.LoadItems(req.body.email,(err,rec)=>{
+    if(err){
+      res.json({success: false, msg:'Failed to load'});
+    } else {
+      res.json({success :true,rec:rec});
+      console.log(req.body.email);
+    }
+});
+console.log('gyudtydfgui');
+});
 
 module.exports = router;
