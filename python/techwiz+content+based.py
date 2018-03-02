@@ -1,9 +1,4 @@
-
-# coding: utf-8
-
-# In[85]:
-
-
+import json
 import graphlab
 import pymongo
 import pandas as pd
@@ -11,15 +6,11 @@ import numpy as np
 from pymongo import MongoClient
 connection=MongoClient('localhost')
 db=connection.techwiz
-x=db.menu1
-y=x.find_one({})
-print(y)
+x=db.menu
 y=x.find({})
 #print(y)
 z=[]
-a=[]
 #print(y[1])
-print type(y)
 for i in y:
     #print(i["price"])
     #z["price"]=i["price"]
@@ -34,138 +25,63 @@ for i in y:
     except:
         pass    
     z.append(i)
-print(type(z[2]['price']))
-print(type(z))
 df = pd.DataFrame(data=z,dtype=object)
 df['price'] = df['price'].astype(str)
 df['name'] = df['name'].astype(str)
 df['type'] = df['type'].astype(str)
 df['description'] = df['description'].astype(str)
 print(df.dtypes)
-
-
-# In[86]:
-
-
-menu=graphlab.SFrame(df)
-print type(menu)
-menu.head()
-
-
-# In[58]:
-
-
-len(menu)
-
-
-# In[88]:
-
-
-menu['word_count']=graphlab.text_analytics.count_words(menu['description'])
-menu.head()
-
-
-# In[89]:
-
-
-tfidf = graphlab.text_analytics.tf_idf(menu['word_count'])
-tfidf
-
-
-# In[90]:
-
-
-menu['tfidf'] = tfidf
-
-
-# In[92]:
-
-
-nan = menu[menu['name'] == 'Keema Nan']
-
-
-# In[93]:
-
-
-nan[['tfidf']].stack('tfidf',new_column_name=['word','tfidf']).sort('tfidf',ascending=False)
-
-
-# In[94]:
-
-
-knn_model = graphlab.nearest_neighbors.create(menu,features=['tfidf'],label='name')
-
-
-# In[100]:
-
-
-na=knn_model.query(nan)
-
-
-# In[97]:
-
-
-aloo = menu[menu['name'] == 'Aloo Chole Dinner']
-
-
-# In[136]:
-
-
-al=knn_model.query(aloo)
-print(al)
-
-
-# In[103]:
-
-
-al.join(na,how='inner')
-
-
-# In[137]:
-
-
-aloo1 = menu[menu['name'] == 'Channasaag Dinner']
-al1=knn_model.query(aloo1)
-print(al1)
-
-
-# In[141]:
-
-
-#al.join(al1,on='reference_label',how='inner')
-import numpy
-j=al.append(al1)
-j.groupby(key_columns='reference_label',operations={'rank': graphlab.aggregate.MEAN('rank')}).sort('rank',ascending=True)[2:4]
-
-
-# In[127]:
-
-
+users=db.users.find({})
 order=db.orders
-
-
-# In[128]:
-
-
-orders=order.find_one({'email':'pg4@gmail.com'})
-
-
-# In[134]:
-
-
-items=orders['orders']
-
-
-# In[135]:
-
-
-food_items=
-for i in items:
-    print(i['foodname'])
-
-
-# In[ ]:
-
-
-
-
+user=[]
+menu=graphlab.SFrame(df)
+menu['word_count']=graphlab.text_analytics.count_words(menu['description'])
+tfidf = graphlab.text_analytics.tf_idf(menu['word_count'])
+menu['tfidf'] = tfidf
+knn_model = graphlab.nearest_neighbors.create(menu,features=['tfidf'],label='name')
+print type(users)
+for i in users:
+    user=i['email']
+    print(user)
+    orders=order.find({'email':user})
+    items=[]
+    for i in orders:
+        items+=i['orders']
+        print type(items)
+    if len(items)!=0:
+        food_items=pd.DataFrame(data=items)
+        food_items=pd.unique(food_items['foodname'])
+    #for i in items:
+        #food_items+=i['foodname']
+    if len(food_items)!=0 :
+        print(food_items)
+    recommended_items=graphlab.SFrame({})
+    for i in food_items:
+        item=menu[menu['name']==i]
+        item_model=knn_model.query(item)
+        print(item_model)
+        recommended_items=recommended_items.append(item_model)
+    recommended_items=recommended_items.groupby(key_columns='reference_label',operations={'rank': graphlab.aggregate.MEAN('rank')}).sort('rank',ascending=True)
+    print(type(recommended_items))
+    recommended_items.rename({'reference_label':'name'})
+    recommended_items=recommended_items.join(menu,how='inner')
+    recommended_items=recommended_items.remove_columns(['tfidf','word_count'])
+    recommended_items['rank']=recommended_items['rank'].astype(str)
+    recommend={}
+    recommended_items= recommended_items.pack_columns(columns=['type','price','description','rank','name'],dtype=dict,new_column_name='category')
+    print type(recommended_items)
+    recommend["email"]=user
+    #df = recommended_items.to_dataframe().set_index('food')
+    #print type(recommended_items.to_numpy())
+    #print(recommended_items)
+    #recommend["items"]=df.to_dict(orient='dict')['category']
+    #recommend["items"]['rank']=df.to_dict(orient='dict')['type']
+    print("hfgdsjdhgsdfjjfdhjdddddddddddddhfdjh")
+    x=[]
+    for i in recommended_items:
+        x.append(i)
+    #print(recommend)
+    recommend['items']=x
+    print(recommend)
+    json_data = json.dumps(recommend,indent=4)
+    db.recommend.insert_one(recommend)

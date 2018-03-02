@@ -49,6 +49,7 @@ export class PaymentComponent implements OnInit {
 
   pay()
   {
+    this.OS.reset()
     this.AS.logout();
     this.router.navigate(['/login']);
     //this.router.navigate(['/payment']);
@@ -58,5 +59,6 @@ export class PaymentComponent implements OnInit {
   {
     this.display=true;
   }
+  
 
 }
