@@ -6,6 +6,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 const tempOrders=require('./models/tempOrders');
+const recommend=require('./models/recommend');
 // Connect To Database
 mongoose.connect(config.database);
 
@@ -29,7 +30,8 @@ const users = require('./routes/users');
 const menu=require('./routes/Menu');
 const orders=require('./routes/orders');
 
-
+//update index
+//recommend.updateIndex();
 // Port Number
 const port = 3000;
 
