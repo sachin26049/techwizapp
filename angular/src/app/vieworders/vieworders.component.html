@@ -1,0 +1,49 @@
+<div class="container"  style="border-style : groove">
+<div class="jumbotron">
+<div class="row">
+<div class=col-sm-4 col-md-4 col-lg-4>EMAIL</div>
+<div class=col-sm-4 col-md-4 col-lg-4>
+<div class=row>
+<div class="col-sm-6 col-md-6 col-lg-6">FOOD NAME</div>
+<div class="col-sm-6 col-md-6 col-lg-6">QUANTITY</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class=col-sm-4 col-md-4 col-lg-4>TOTAL BILL</div>
+
+
+</div>
+
+
+
+</div>
+
+<div class="row" style="margin-bottom:2%; border-bottom-style : groove" *ngFor="let x of orderz">
+  <div class="col-sm-4 col-md-4 col-lg-4">
+    {{x.email}}
+  </div>
+  <div class="col-sm-4 col-md-4 col-lg-4">
+      <div class="row" style="margin-bottom:5%" *ngFor="let y of x.orders ">
+        <div class="col-sm-6">{{y.foodname}}</div>
+        <div class="col-sm-6">{{y.Count}}</div>
+        
+      </div>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        {{100}}
+      </div>
+    
+  
+
+
+
+</div>
+
+
+</div>

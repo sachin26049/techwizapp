@@ -21,6 +21,22 @@ router.post('/add', (req, res, next) => {
     }
   });
 });
+
+router.post('/addType', (req, res, next) => {
+  let newFood = new type({
+   
+    type:req.body.type
+  });
+
+  type.addType(newFood, (err, food) => {
+    if(err){
+      res.json({success: false, msg:'Failed to Add'});
+    } else {
+      res.json({success: true, msg:'Food Added'});
+    }
+  });
+});
+
 router.post('/delete', (req, res, next) => {
   let name= req.body.name;
     
@@ -30,6 +46,19 @@ router.post('/delete', (req, res, next) => {
       res.json({success: false, msg:'Failed to delete'});
     } else {
       res.json({success: true, msg:'Food deleted'});
+    }
+  });
+});
+
+router.post('/deleteType', (req, res, next) => {
+  let name= req.body.type;
+    
+
+  type.Delete(name, (err, food) => {
+    if(err){
+      res.json({success: false, msg:'Failed to delete'});
+    } else {
+      res.json({success: true, msg:'Type deleted'});
     }
   });
 });

@@ -14,6 +14,11 @@ getMenuH(){
   return this.http.get ('http://localhost:3000/menu/LoadMenu');
 }
 
+getorders(){
+  return this.http.get ('http://localhost:3000/orders/LoadOrders');
+}
+
+
 getType(){
   return this.http.get ('http://localhost:3000/menu/LoadType');
 }
