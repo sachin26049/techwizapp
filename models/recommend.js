@@ -31,12 +31,8 @@ const RecommendSchema = mongoose.Schema({
           type:String,
           required:true
       }
-<<<<<<< HEAD
-    }]
-=======
     }
->>>>>>> 8bd1da726d24031e2ba1c962d65e6ab59ea8d25d
-}]
+  }]
 },{ collection : 'recommend' });
 
 
@@ -53,18 +49,5 @@ Recommend.find({"email":email},callback);
 //console.log(callback);
 }
 
-<<<<<<< HEAD
-=======
-/*module.exports.updateIndex =function(callback)
-{
-Recommend.find(x);
-console.log(x);
-for(var i=0;i<x.length;i++)
-{ 
-
-}
-}*/
-
->>>>>>> 8bd1da726d24031e2ba1c962d65e6ab59ea8d25d
 
 
