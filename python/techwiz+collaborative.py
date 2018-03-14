@@ -17,7 +17,7 @@ menu=pd.DataFrame(list(db.menu.find({})))["name"]
 email=pd.unique(orders["email"])
 
 
-# In[29]:
+# In[30]:
 
 
 vector = np.zeros((email.size,menu.size), dtype=float, order='C')
@@ -32,20 +32,14 @@ for index,i in orders.iterrows():
     for j in food["foodname"]:
         items[j][i["email"]]=1
 #print(items)
-mean=np.mean(items,axis=1)
+#mean=np.mean(items,axis=1)
 #print(mean)
-items=(items.transpose()-mean)
-rows=items.shape[0]
-columns=items.shape[1]
-list(items)
-numerator=[1]
-for i in email:
-    numerator*=items[i]
-#print(numerator)
-items=items.transpose().values
-denominator=items.sum(axis=1)
+#items=(items.transpose()-mean)
+#print(items)
+items=items.values
+#denominator=items.sum(axis=1)
 #print denominator
-multiply=1
+#multiply=1
 #print items[0,0]
 similarity = np.zeros((email.size,email.size), dtype=float, order='C')
 for i in range(0,email.size):
@@ -54,11 +48,11 @@ for i in range(0,email.size):
         deno1=0
         deno2=0
         for k in range(0,menu.size):
-            if(items[i,k]!=mean[i] and items[j,k]!=mean[j]):
+            if((items[i,k]+mean[i])!=0.0000 and (items[j,k]+mean[j])!=0.0000):
                 sum1+=(items[i,k]*items[j,k])
-                deno1+=math.pow(items[i,k],2)
-                deno2+=math.pow(items[j,k],2)
-        #print sum1/(math.sqrt(deno1*deno2))
+            deno1+=math.pow(items[i,k],2)
+            deno2+=math.pow(items[j,k],2)
+        #print sum1,deno1,deno2
         if(deno1!=0):
             similarity[i,j]=sum1/(math.sqrt(deno1*deno2))
 print similarity
@@ -67,10 +61,12 @@ for i in range(0,email.size):
     for k in range(0,menu.size):
         sum1=0
         for j in range(0,email.size):
-            if(items[j,k]!=mean[j] and int(items[i,k])==int(mean[i])):
+            if(int(items[j,k])!=int(mean[j]) and int(items[i,k])==int(mean[i])):
                 sum1+=items[j,k]*similarity[i,j]
+            #if(int(items[i,k])!=int(mean[i])):
+             #   items[i,k]=0
         recommend[i,k]=sum1/email.size
-#print recommend
+print recommend
 #for i in range(0,email.size):
 #    print email[i]
 #    for j in range(0,menu.size):

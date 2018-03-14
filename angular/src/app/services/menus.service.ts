@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient , HttpHeaders} from '@angular/common/http';
-import { PARAMETERS } from '@angular/core/src/util/decorators';
-
+import {AuthService} from './auth.service';
 @Injectable()
 export class MenusService {
   Menu:[any];
   Count:[Number];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private AS:AuthService ) {
 
 }
 
@@ -18,13 +17,14 @@ getMenuH(){
 getType(){
   return this.http.get ('http://localhost:3000/menu/LoadType');
 }
-
-getRecommendItems(user:any){
-  console.log(user['email']);
-  let email=user['email'];
-  return this.http.get('http://localhost:3000/menu/RecommendedItems/'+email);
+getRecommendations(){
+  var email=JSON.parse(this.AS.getUser()).email;
+  return this.http.post('http://localhost:3000/menu/LoadRecommendation',{"email":email});
 }
-
+getCollabRecommendations(){
+  var email=JSON.parse(this.AS.getUser()).email;
+  return this.http.post('http://localhost:3000/menu/LoadCollabRecommendation',{"email":email});
+}
 setOrders(m:[Object],c:[Number])
 {
 this.Menu=m;
