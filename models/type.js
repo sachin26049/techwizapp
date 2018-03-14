@@ -15,3 +15,14 @@ module.exports.Load1 =function(callback)
 Type.find({},callback);
 //console.log(callback);
 }
+
+module.exports.Delete =function(name,callback)
+{
+Type.deleteOne({ "type" :name } ,callback);
+//console.log(callback);
+}
+
+module.exports.addType = function(newFood, callback){
+
+  newFood.save(callback);
+}

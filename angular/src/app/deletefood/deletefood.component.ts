@@ -5,11 +5,14 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router} from '@angular/router';
 import {AdminmenuService} from '../services/adminmenu.service';
 import {MenusService} from '../services/menus.service';
+import {MyFilterPipe} from '../pipes/food';
 @Component({
   selector: 'app-deletefood',
+ // pipes: [MyFilterPipe],
   templateUrl: './deletefood.component.html',
   styleUrls: ['./deletefood.component.css']
 })
+
 export class DeletefoodComponent implements OnInit {
 type: any;
 type1:"Rice";
@@ -34,6 +37,9 @@ Type:[any];
         //console.log(this.Menu);
       }
     });
+
+    
+    
     this.MS.getType().subscribe(data=>{
       if(data['success'])
       {
