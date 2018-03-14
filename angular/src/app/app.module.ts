@@ -47,6 +47,9 @@ import { ChefSocketService } from './chef/chef-socket.service';
 import { ChefsService } from './chef/chefs.service';
 import { PaymentComponent } from './payment/payment.component';
 
+import { MyFilterPipe } from './pipes/food';
+import { ViewordersComponent } from './vieworders/vieworders.component';
+
 const appRoutes: Routes = [
   {path: '' , component: HomepageComponent},
   {path: 'login' , component: LoginComponent},
@@ -62,6 +65,7 @@ const appRoutes: Routes = [
   {path: 'deletetype' , component: DeletetypeComponent},
   {path: 'addtype' , component: AddtypeComponent},
   {path: 'modifytype' , component: ModifytypeComponent},
+  {path:'vieworders',component: ViewordersComponent},
   {path: 'viewfeedback' , component: ViewfeedbackComponent},
   {path:'chef', component:ChefComponent},
   {path:'OrderStatus', component: OrderstatusComponent, canActivate: [AuthGuard]},
@@ -78,7 +82,7 @@ const appRoutes: Routes = [
     LoginComponent,
     MenuComponent,
     OrdersComponent,
-
+    MyFilterPipe,
     AdminComponent,
     ManagemenuComponent,
     ViewfeedbackComponent,
@@ -94,6 +98,8 @@ const appRoutes: Routes = [
     ChefComponent,
 
     PaymentComponent,
+
+    ViewordersComponent,
 
 
   ],

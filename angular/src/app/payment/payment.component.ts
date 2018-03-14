@@ -14,12 +14,14 @@ export class PaymentComponent implements OnInit {
   count:any[];
   menu:[any];
   sum:number;
+  display:boolean;
 
   constructor(private router:Router,private AS:AuthService,private OS:OrdersService, private MS:MenusService) { }
 
   ngOnInit() {
     this.count=this.OS.getTotalCount();
     this.menu=this.MS.getMenu();
+    this.display=false;
   }
 
   total()
@@ -47,9 +49,16 @@ export class PaymentComponent implements OnInit {
 
   pay()
   {
+    this.OS.reset()
     this.AS.logout();
     this.router.navigate(['/login']);
     //this.router.navigate(['/payment']);
   }
+
+  Show()
+  {
+    this.display=true;
+  }
+  
 
 }

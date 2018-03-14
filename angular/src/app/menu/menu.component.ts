@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MenusService} from '../services/menus.service';
 import {Router} from '@angular/router';
+import {AuthService} from '../services/auth.service';
 
 
 @Component({
@@ -149,6 +150,20 @@ constructor(private MS: MenusService,private router: Router) {
                 }
                });
             }
+
+            let user=JSON.parse(this.AS.getUser());
+            console.log(user)
+            this.MS.getRecommendItems(user).subscribe(data => {
+              if(data['success'])
+              {
+                //console.log("hhh");
+              this.Recommend=data['rec'];
+              console.log(data['rec']);
+              //console.log(this.type);
+              }
+
+
+            });
 
   }
 

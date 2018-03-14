@@ -35,6 +35,8 @@ module.exports.getOrdersByEmail = function(email, callback){
 module.exports.addOrder = function(order, callback){
 
       order.save(callback);
+      // console.log(order);
+
 }
 
 module.exports.Load =function(callback)
