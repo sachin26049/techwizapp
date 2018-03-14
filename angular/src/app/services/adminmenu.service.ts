@@ -20,6 +20,15 @@ addFood(food)
   });
 }
 
+addType(food)
+{
+
+
+    return this.http.post ('http://localhost:3000/menu/addType', food, {
+    headers: new HttpHeaders().set('content-type', 'application/json'),
+  });
+}
+
 updateFood(food)
 {
 
@@ -38,6 +47,15 @@ deleteFood(food)
   });
 }
 
+
+deleteType(food)
+{
+
+
+    return this.http.post ('http://localhost:3000/menu/deleteType', food, {
+    headers: new HttpHeaders().set('content-type', 'application/json'),
+  });
+}
 
 
 

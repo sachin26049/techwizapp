@@ -26,7 +26,7 @@ Type:[any];
     private MS :MenusService) { }
     
   ngOnInit() {
-    console.log("Sss");
+    //console.log("Sss");
     this.MS.getMenuH().subscribe(data=>{
       if(data['success'])
       {

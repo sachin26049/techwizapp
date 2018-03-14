@@ -14,11 +14,12 @@ router.post('/add', (req, res, next) => {
 
   Orders.addOrder(order, (err, food) => {
     if(err){
-      res.json({success: false, msg:'Failed to Add'});
+      res.json({success: false, msg:'Failed to Add',order:order});
     } else {
-      res.json({success: true, msg:'order Added'});
+      res.json({success: true, msg:'order Added',order:order});
     }
   });
+
 });
 
 router.post('/addtemp',(req,res,next)=>{

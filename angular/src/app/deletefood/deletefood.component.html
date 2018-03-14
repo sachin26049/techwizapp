@@ -14,12 +14,12 @@
 	</select>
 	
 <!--	<div *ngIf="Menu&&type"> -->
-      
+  <label  style=" font-size:20px;margin-top:5%;align:center">Select Food </label>
   <select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="food">
       
-    <ng-container *ngFor="let x of Menu ;let i=index" >
+    <ng-container *ngFor="let x of Menu | myfilter:type" >
      
-          <option value="{{Menu[i].name}}">{{Menu[i].name}}</option>
+          <option value="{x.name}}">{{x.name}}</option>
      
         </ng-container>
 	</select>
