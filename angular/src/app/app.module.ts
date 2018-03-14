@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
@@ -112,6 +113,7 @@ const appRoutes: Routes = [
     MatButtonModule, MatCheckboxModule,
     MatTabsModule,
     MatExpansionModule,
+    BrowserAnimationsModule,
       NgcFloatButtonModule,
       SocketIoModule.forRoot(config) 
     ],

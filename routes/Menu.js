@@ -3,7 +3,8 @@ const router = express.Router();
 const config = require('../config/database');
 const Menu = require('../models/Menu');
 const type = require('../models/type');
-
+const recommend=require('../models/recommend');
+const collabrecommend=require('../models/collabrecommend');
 // Register
 router.post('/add', (req, res, next) => {
   let newFood = new Menu({
@@ -95,8 +96,33 @@ Menu.Load((err,menu)=>{
 
 
 });
+router.post('/LoadRecommendation', (req, res, next) => {
+  var email=req.body.email;
+  console.log(email);
+  recommend.LoadItems(email,(err,rec)=>{
+    if(err){
+      res.json({success: false, msg:'Failed to load'});
+    } else {
+      res.json({success :true,recommendation:rec});
+    }
+  });
+  
+  
+  });
 
-
+  router.post('/LoadCollabRecommendation', (req, res, next) => {
+    var email=req.body.email;
+    console.log(email);
+    collabrecommend.LoadItems(email,(err,rec)=>{
+      if(err){
+        res.json({success: false, msg:'Failed to load'});
+      } else {
+        res.json({success :true,recommendation:rec});
+      }
+    });
+    
+    
+    });
 
 router.get('/LoadType', (req, res, next) => {
 

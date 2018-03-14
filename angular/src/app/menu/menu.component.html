@@ -1,7 +1,64 @@
-<div *ngIf="type&&Menu">
+<div *ngIf="type&&Menu&&Recommendations&&flag&&CollabRecommendations&&collabFlag">
   <ngc-float-button icon="add_shopping_cart" (click)="goToOrders()" >
     </ngc-float-button>
 <mat-tab-group class="demo-tab-group" >
+    <mat-tab  label="Recommended" >
+        <mat-accordion>
+          <h3 style="color:#00D800">Recommended Dishes for you!!</h3>
+
+          <ng-container *ngFor="let y of CollabRecommendations;let i=index" >
+              <div *ngIf = "duplicate[i]==0">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title style="width:80%">
+                      {{y.name}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      <i class="fa fa-inr" aria-hidden="true" style="margin-top:2px"></i>{{y.price}}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <ng-template matExpansionPanelContent >
+                    
+                      <h3>Description :</h3><p><span style="font-size:20px">{{y.description}}</span></p>
+                      <button (click)="decrCount(collabIndex[i])" style="font-size:20px;
+                      border-color:white;background:#00D800;color:white">-</button>
+                      <input readonly [(ngModel)]="Count[collabIndex[i]]" style="width:30px;border:none;font-size:20px;
+                      background:white;margin:0px;"class="form-group-sm">
+                      <button (click)="incrCount(collabIndex[i])" style="font-size:20px;
+                      border-color:white;background:#00D800;color:white">+</button>
+                    
+                </ng-template>
+                </mat-expansion-panel>
+              </div>
+            </ng-container>
+
+          <ng-container *ngFor="let y of Recommendations;let i=index" >
+              <div *ngIf = "i<10">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title style="width:80%">
+                      {{y.category.name}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      <i class="fa fa-inr" aria-hidden="true" style="margin-top:2px"></i>{{y.category.price}}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <ng-template matExpansionPanelContent >
+                    
+                      <h3>Description :</h3><p><span style="font-size:20px">{{y.category.description}}</span></p>
+                      <button (click)="decrCount(index[i])" style="font-size:20px;
+                      border-color:white;background:#00D800;color:white">-</button>
+                      <input readonly [(ngModel)]="Count[index[i]]" style="width:30px;border:none;font-size:20px;
+                      background:white;margin:0px;"class="form-group-sm">
+                      <button (click)="incrCount(index[i])" style="font-size:20px;
+                      border-color:white;background:#00D800;color:white">+</button>
+                    
+                </ng-template>
+                </mat-expansion-panel>
+              </div>
+            </ng-container>
+          </mat-accordion>
+      </mat-tab>
     <mat-tab *ngFor="let x of type;let k=index" label={{x.type}} >
           <mat-accordion>
             <ng-container *ngFor="let y of Menu;let i=index" >
@@ -15,17 +72,21 @@
                         <i class="fa fa-inr" aria-hidden="true" style="margin-top:2px"></i>{{y.price}}
                       </mat-panel-description>
                     </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                    <p>Description :{{y.des}}</p>
-                    <button (click)="decrCount(i)">-</button>
-                    <input readonly [(ngModel)]="Count[i]">
-                    <button (click)="incrCount(i)">+</button>
-                    </ng-template>
+                    <ng-template matExpansionPanelContent >
+                      
+                        <h3>Description :</h3><p><span style="font-size:20px">{{y.description}}</span></p>
+                        <button (click)="decrCount(i)" style="font-size:20px;
+                        border-color:white;background:#00D800;color:white">-</button>
+                        <input readonly [(ngModel)]="Count[i]" style="width:30px;border:none;font-size:20px;
+                        background:white;margin:0px;"class="form-group-sm">
+                        <button (click)="incrCount(i)" style="font-size:20px;
+                        border-color:white;background:#00D800;color:white">+</button>
+                      
+                  </ng-template>
                   </mat-expansion-panel>
                 </div>
               </ng-container>
             </mat-accordion>
         </mat-tab>
 </mat-tab-group>
-<button class="button" (click)="goToOrders()">orders</button>
 </div>
