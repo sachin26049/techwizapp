@@ -135,10 +135,14 @@ constructor(private MS: MenusService,private router: Router) {
                   this.CollabRecommendations=data['recommendation'][0].items;
                   console.log(this.Recommendations);
                   this.collabIndex=new Array(this.Recommendations.length);
+                  this.duplicate=new Array(this.Recommendations.length);
                   for(var i=0;i<this.CollabRecommendations.length;i++)
                   {
                     this.collabIndex[i]=this.Menu.findIndex((element)=>{return element.name==this.CollabRecommendations[i].name});
-  
+                    if(this.Recommendations.findIndex((element)=>{return element.category.name==this.CollabRecommendations[i].name})==-1)
+                    this.duplicate[i]=0;
+                    else
+                    this.duplicate[i]=1;
                   }
                   console.log(this.collabIndex);
                   this.collabFlag=1;
