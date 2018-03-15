@@ -81,6 +81,9 @@ export class OrdersService {
   reset()
   {
     this.Count=undefined;
+    this.orders=new Array();this.orderId=0;this.orderStatus
+  =new Array();
+  this.deliverd=new Array();
   }
 
   finalOrder(order:any)

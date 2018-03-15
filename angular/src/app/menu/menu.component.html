@@ -1,11 +1,12 @@
-<div *ngIf="type&&Menu&&Recommendations&&flag&&CollabRecommendations&&collabFlag">
+<div *ngIf="type&&Menu">
   <ngc-float-button icon="add_shopping_cart" (click)="goToOrders()" >
     </ngc-float-button>
 <mat-tab-group class="demo-tab-group" >
     <mat-tab  label="Recommended" >
         <mat-accordion>
+            <ng-container *ngIf="Recommendations&&flag&&CollabRecommendations&&collabFlag ; else norecom">
           <h3 style="color:#00D800">Recommended Dishes for you!!</h3>
-
+          
           <ng-container *ngFor="let y of CollabRecommendations;let i=index" >
               <div *ngIf = "duplicate[i]==0">
                 <mat-expansion-panel>
@@ -57,6 +58,10 @@
                 </mat-expansion-panel>
               </div>
             </ng-container>
+          </ng-container>
+          <ng-template #norecom>
+            <h2>No Recommendations For You!</h2>
+          </ng-template>
           </mat-accordion>
       </mat-tab>
     <mat-tab *ngFor="let x of type;let k=index" label={{x.type}} >
