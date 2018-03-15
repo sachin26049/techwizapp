@@ -1,3 +1,10 @@
+<div class="jumbotron" *ngIf="flag1==0" style="padding:20%">
+    <h2>Enter Password:</h2>  
+    <input type="password" [(ngModel)]="pass" style="width:50%;height:40px;">
+    <br>
+    <button class="btn btn-info" (click)="checkpass()" style="width:40%;margin-top:30px;padding-left:5%;padding-right:5%">Submit</button>
+    </div>
+    <div *ngIf="flag1==1">
 <div class="container">
 <div class="row">
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -14,8 +21,8 @@
     </div>
   </div>
 </div>
-<div class="row" *ngFor="let x of orderList;let i=index" >
-  <div class="container" *ngIf="flag[i]<2">
+<div class="row " *ngFor="let x of orderList;let i=index" >
+  <div class="container jumbotron" style="padding:2px;padding-right:10px;padding-top:20px" *ngIf="flag[i]<2">
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
   <h4>{{x.userEmail}}</h4>
   </div>
@@ -36,5 +43,6 @@
     <div class="row"  *ngIf="flag[i]==0;else other"><button class="btn btn-info" (click)="sendStatus(i)">SendStatus</button></div>
     <ng-template #other><button class="btn btn-info" (click)="OrderDeliverd(i)">OrderDeliverd</button></ng-template>
   </div>
+</div>
 </div>
 </div>

@@ -51,7 +51,7 @@ import { MyFilterPipe } from './pipes/food';
 import { ViewordersComponent } from './vieworders/vieworders.component';
 
 const appRoutes: Routes = [
-  {path: '' , component: HomepageComponent},
+  {path: 'home' , component: HomepageComponent},
   {path: 'login' , component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'menu', component: MenuComponent, canActivate: [AuthGuard]},

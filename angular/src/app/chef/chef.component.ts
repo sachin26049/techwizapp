@@ -11,14 +11,19 @@ export class ChefComponent implements OnInit {
 orderList:any[];
 orderStatus:any[];
 flag:any[];
+flag1:any;
+pass:any;
 public now: Date = new Date();
   constructor(private CS:ChefsService,private CSO:ChefSocketService) { 
+    this.flag1=0;
     setInterval(() => {
+
       this.now = new Date();
     }, 60);
   }
 
   ngOnInit() {
+
     this.orderList=new Array();
     this.orderStatus=new Array();
     this.flag=new Array();
@@ -36,6 +41,14 @@ public now: Date = new Date();
   });
 
   }
+
+
+  checkpass()
+  {
+    if(this.pass=="hehe")
+    this.flag1=1;
+  }
+
   sendStatus(i:any)
   {
     

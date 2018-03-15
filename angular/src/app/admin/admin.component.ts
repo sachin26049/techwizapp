@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
-  constructor() { }
+flag:any;
+pass:any;
+  constructor() { this.flag=0;}
 
   ngOnInit() {
+  }
+  checkpass()
+  {
+    if(this.pass=="hehe")
+    this.flag=1;
   }
 
 }
