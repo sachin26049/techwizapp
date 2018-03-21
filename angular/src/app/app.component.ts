@@ -11,8 +11,25 @@ export class AppComponent {
 
   title = 'Techwizapp';
   flag:Number;
+  pass:string;
+  flag1:number;
   constructor(private router: Router,){this.flag=0;}
+  
+  /*checkpass2()
+  {
+    if(this.pass=="hehe")
+    this.route(2);
+  }
+
+display()
+{
+this.flag1=1;
+
+}
+*/
   route(code:Number)
+
+
   {
     console.log(code);
     switch(code)
@@ -20,7 +37,9 @@ export class AppComponent {
       case 1:this.router.navigate(['/home']);
       this.flag=1;
       break;
-      case 2:this.router.navigate(['/admin']);
+      case 2:
+      //this.flag=2;
+      this.router.navigate(['/admin']);
       this.flag=2;
       break;
       case 3:this.router.navigate(['/chef']);

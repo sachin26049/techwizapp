@@ -68,4 +68,15 @@ this.adminmenuService.deleteFood(food).subscribe(data => {
       }
     });
 }
+
+goBack()
+{
+  this.router.navigate(['/managemenu']);
+}
+
+goHome()
+{
+this.router.navigate(['/admin']);
+
+}
 }
