@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
+//import {FlashMessagesService} from 'angular2-flash-messages';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,20 +14,62 @@ export class AppComponent {
   flag:Number;
   pass:string;
   flag1:number;
-  constructor(private router: Router,){this.flag=0;}
+  pass1:string;
+  flag2:number;
+  constructor(private router: Router,/*private flashMessage: FlashMessagesService*/){this.flag=0;this.flag1=0;this.flag2=0;}
   
-  /*checkpass2()
+  checkpass()
   {
     if(this.pass=="hehe")
+   { 
+   /* this.flashMessage.show('You are now logged in', {
+      cssClass: 'alert-success',
+      timeout: 5000});*/
     this.route(2);
+   
   }
+  else
+  {
+    /*this.flashMessage.show('Wrong Password', {
+      cssClass: 'alert-danger',
+      timeout: 5000});*/
+
+
+  }     
+}
+ checkpass1()
+ {
+   if(this.pass1=="hehe")
+  {
+   /* this.flashMessage.show('You are now logged in', {
+      cssClass: 'alert-success',
+      timeout: 5000});*/  
+    this.route(3);
+  }
+  else
+
+  {
+    /*this.flashMessage.show('Wrong Password', {
+      cssClass: 'alert-danger',
+      timeout: 5000});*/
+
+  }
+}
 
 display()
 {
 this.flag1=1;
 
 }
-*/
+
+
+display1()
+{
+this.flag2=1;
+
+}
+
+
   route(code:Number)
 
 
