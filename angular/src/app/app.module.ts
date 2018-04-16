@@ -50,8 +50,10 @@ import { PaymentComponent } from './payment/payment.component';
 import { MyFilterPipe } from './pipes/food';
 import { MyFilterEmail } from './pipes/email';
 import { ViewordersComponent } from './vieworders/vieworders.component';
+import { OfferComponent } from './offer/offer.component';
 
 const appRoutes: Routes = [
+  {path:'offer',component:OfferComponent},
   {path: 'home' , component: HomepageComponent},
   {path: 'login' , component: LoginComponent},
   {path: 'signup', component: SignupComponent},
@@ -102,6 +104,8 @@ const appRoutes: Routes = [
     PaymentComponent,
 
     ViewordersComponent,
+
+    OfferComponent,
 
 
   ],

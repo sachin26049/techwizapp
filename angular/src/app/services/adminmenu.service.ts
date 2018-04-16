@@ -20,6 +20,16 @@ addFood(food)
   });
 }
 
+addOffer(food)
+{
+
+
+    return this.http.post ('http://localhost:3000/offer/add', food, {
+    headers: new HttpHeaders().set('content-type', 'application/json'),
+  });
+}
+
+
 addType(food)
 {
 
@@ -38,6 +48,16 @@ updateFood(food)
   });
 }
 
+updateOffer(food)
+{
+
+
+    return this.http.put ('http://localhost:3000/Offer/update', food, {
+    headers: new HttpHeaders().set('content-type', 'application/json'),
+  });
+}
+
+
 deleteFood(food)
 {
 
@@ -46,6 +66,16 @@ deleteFood(food)
     headers: new HttpHeaders().set('content-type', 'application/json'),
   });
 }
+
+deleteOffer(food)
+{
+
+
+    return this.http.post ('http://localhost:3000/offer/delete', food, {
+    headers: new HttpHeaders().set('content-type', 'application/json'),
+  });
+}
+
 
 
 deleteType(food)

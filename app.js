@@ -27,9 +27,11 @@ const app = express();
 
 //routing
 const users = require('./routes/users');
+
 const menu=require('./routes/Menu');
 const orders=require('./routes/orders');
 
+const offer = require('./routes/offer');
 //update index
 //recommend.updateIndex();
 // Port Number
@@ -52,8 +54,11 @@ require('./config/passport')(passport);
 
 //using respective files in routes
 app.use('/users', users);
+
 app.use('/menu',menu);
 app.use('/orders',orders);
+
+app.use('/offer',offer);
 
 
 // Index Route

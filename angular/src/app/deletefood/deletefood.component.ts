@@ -44,7 +44,7 @@ Type:[any];
       if(data['success'])
       {
         this.Type=data['type'];
-       // console.log(this.Type);
+       console.log(this.Type);
       }
     });
 

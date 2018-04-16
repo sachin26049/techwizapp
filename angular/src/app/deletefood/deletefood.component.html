@@ -24,7 +24,7 @@
 	<label for="pre1" style=" font-size:20px;margin-top:5%;align:center">Select Food Type</label>
 	<select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="type">
       <ng-container *ngFor="let y of Type;let j=index" >
-          <option value="{{Type[j].type}}">{{Type[j].type}}</option>
+          <option value="{{y.type}}">{{y.type}}</option>
       </ng-container>
 	</select>
 	
