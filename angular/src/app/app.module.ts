@@ -48,6 +48,7 @@ import { ChefsService } from './chef/chefs.service';
 import { PaymentComponent } from './payment/payment.component';
 
 import { MyFilterPipe } from './pipes/food';
+import { MyFilterFoodPipe } from './pipes/filterfood';
 import { MyFilterEmail } from './pipes/email';
 import { ViewordersComponent } from './vieworders/vieworders.component';
 import { OfferComponent } from './offer/offer.component';
@@ -87,6 +88,7 @@ const appRoutes: Routes = [
     OrdersComponent,
     MyFilterPipe,
     MyFilterEmail,
+    MyFilterFoodPipe,
     AdminComponent,
     ManagemenuComponent,
     ViewfeedbackComponent,

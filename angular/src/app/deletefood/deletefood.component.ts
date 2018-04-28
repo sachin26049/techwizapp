@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {AdminmenuService} from '../services/adminmenu.service';
 import {MenusService} from '../services/menus.service';
 import {MyFilterPipe} from '../pipes/food';
+import {MyFilterFoodPipe} from '../pipes/filterfood';
 @Component({
   selector: 'app-deletefood',
  // pipes: [MyFilterPipe],
@@ -34,7 +35,7 @@ Type:[any];
       {
         this.Menu=data['menu'];
 
-        //console.log(this.Menu);
+        console.log(this.Menu);
       }
     });
 
@@ -50,12 +51,12 @@ Type:[any];
 
   }
   onSignupSubmit() {
-    console.log('1');
+   // console.log('1');
     const food=
     {
       name:this.food
       }
-     console.log(food);
+  //   console.log(food);
 //inserting food
      
 this.adminmenuService.deleteFood(food).subscribe(data => {
