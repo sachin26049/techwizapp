@@ -1,3 +1,14 @@
+
+<div class="container">
+  <div class="row">
+  <div class="col-sm-2 col-md-2 col-lg-2">
+    <button class="btn btn-info" (click)="goBack()"  style="margin:5%">Back</button>
+  
+  </div>
+</div>
+</div>
+
+
 <div class="container"  style="border-style : groove">
 <div class="jumbotron">
 <div class="row">
@@ -24,7 +35,15 @@
 
 </div>
 
-<div class="row" style="margin-bottom:2%; border-bottom-style : groove" *ngFor="let x of orderz">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <input type="text" name="mail" placeholder="Enter Email Id"  [(ngModel)]="email" style="margin:5%">
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:2%; border-bottom-style : groove" *ngFor="let x of orderz | myfilterEmail:email">
   <div class="col-sm-4 col-md-4 col-lg-4">
     {{x.email}}
   </div>

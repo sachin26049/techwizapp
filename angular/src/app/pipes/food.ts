@@ -4,12 +4,16 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'myfilter',
     pure: false
 })
+
 export class MyFilterPipe implements PipeTransform {
-    transform(menu: any[],searchText: string): any {
-        return menu.filter(foods => {
-            return foods.type.includes(searchText);
-          });
-    
+    transform(items: any[], filter: any): any {
+        if (!items || !filter) {
+            return items;
+        }
+        // filter items array, items which match and return true will be
+        // kept, false will be filtered out
+        return items.filter(item => item.type==filter);
+    }
 }
 
-}
+

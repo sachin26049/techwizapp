@@ -49,7 +49,7 @@ module.exports.addFood = function(newFood, callback){
 
 module.exports.Load =function(callback)
 {
-Menu.find({},callback);
+Menu.find({},null,{sort : '-price'},callback);
 //console.log(callback);
 }
 

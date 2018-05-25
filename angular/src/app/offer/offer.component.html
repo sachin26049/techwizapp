@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="jumbotron" style="margin-top:10%;align:center">
+  <h1 style="text-align:center">Offers</h1>      
+  
+</div>
+<div class="container">
+  <div class="row">
+  <div class="col-sm-2 col-md-2 col-lg-2">
+    <button class="btn btn-info" (click)="goBack()">Back</button>
+  
+  </div>
+  <div class="col-sm-8 col-md-8 col lg-8"></div>
+  
+  
+  </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6"></div>
+<div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+<button class="btn btn-warning" (click)="view()"><i class="fas fa-list-ul"></i>  View Offers</button>
+
+</div>
+<div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+    <button class="btn btn-warning" (click)="add()"><i class="fas fa-plus-circle"></i>  Add Offers</button>
+    
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+        <button class="btn btn-warning" (click)="remove()"><i class="far fa-trash-alt"></i>  Delete Offers</button>
+        
+        </div>
+
+      </div>
+    </div>
+<div class="container" *ngIf="flag==0">
+
+  <div class="row jumbotron" style="margin-top:5%">
+<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+  Item Name
+</div>
+<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+    Price
+  </div>
+  </div>
+
+  <div class="row" style="margin-bottom:5%" *ngFor="let y of offer ">
+      <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" style="margin-left:3%">
+          {{y.name}}
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" style="padding-left:3%">
+            {{y.price}}
+          </div>
+
+  </div>
+
+
+
+
+
+</div>
+
+
+<div class="container" *ngIf="flag==2">
+    <label for="pre1" style=" font-size:20px;margin-top:5%;align:center">Select Offer</label>
+    <select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="offer1" placeholde="select an item">
+        <ng-container *ngFor="let y of offer;let j=index" >
+            <option value="{{y.name}}">{{y.name}}</option>
+        </ng-container>
+    </select>
+
+    <input type="submit" class="btn btn-danger" (click)="delete()" value="Delete" style="margin-top:5%;margin-left:3%;text-align:center">
+
+    
+
+
+
+
+
+
+  </div>
+  
+  
+
+<div class="container" *ngIf="flag==1">
+<form (ngSubmit)="onSignupSubmit()">
+  <div class="form-group">
+	
+	<label for="pre1" style=" font-size:20px;margin-top:5%;align:center">Select Food Type</label>
+	<select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="type">
+      <ng-container *ngFor="let y of Type;let j=index" >
+          <option value="{{Type[j].type}}">{{Type[j].type}}</option>
+      </ng-container>
+	</select>
+	
+<!--	<div *ngIf="Menu&&type"> -->
+  <label  style=" font-size:20px;margin-top:5%;align:center">Select Food </label>
+  <select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="name">
+      
+    <ng-container *ngFor="let x of Menu | myfilter:type" >
+     
+          <option value="{{x.name}}">{{x.name}}</option>
+     
+        </ng-container>
+	</select>
+  <label  style=" font-size:20px;margin-top:5%;align:center">Offer Price </label>
+
+  
+<input type="text" class="form-control" name="xyz"  [(ngModel)]="price" style="margin-top:5%">
+	
+	<input type="submit" class="btn btn-primary" value="Submit" style="margin-top:5%;text-align:center">
+	
+  <br>
+  </div>
+</form>
+
+</div>
+</div>
+	
+	
+	
