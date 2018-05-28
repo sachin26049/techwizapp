@@ -9,7 +9,8 @@ router.post('/add', (req, res, next) => {
     console.log(req.body);
   let order = new Orders({
     email:req.body.userEmail,
-    orders:req.body.orders
+    orders:req.body.orders,
+    total:req.body.total
   });
 
   Orders.addOrder(order, (err, food) => {
