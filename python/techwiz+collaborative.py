@@ -32,9 +32,9 @@ for index,i in orders.iterrows():
     for j in food["foodname"]:
         items[j][i["email"]]=1
 #print(items)
-#mean=np.mean(items,axis=1)
+mean=np.mean(items,axis=1)
 #print(mean)
-#items=(items.transpose()-mean)
+items=(items.transpose()-mean)
 #print(items)
 items=items.values
 #denominator=items.sum(axis=1)
