@@ -25,7 +25,16 @@ const MenuSchema = mongoose.Schema({
   count:{
     type :Number,
     default:0
+  },
+  ratingCount:{
+    type :Number,
+    default:0
+  },
+  rating:{
+    type :Number,
+    default:0
   }
+
 
 
 },{ collection : 'menu' });
@@ -83,6 +92,23 @@ module.exports.UpdateCount =function(name,count,callback)
     console.log(err);
     console.log(food);
     food.count+=count;
+    food.save(callback);
+  });
+
+  //console.log(callback);
+}
+module.exports.addRating =function(name,rating,callback)
+{ 
+  console.log("in menurating");
+  console.log(name);
+  const query = {"name": name}
+  
+  var old=Menu.findOne(query, (err,food)=>
+  {
+    console.log(err);
+    console.log(food);
+    food.rating+=rating;
+    food.ratingCount++;
     food.save(callback);
   });
 

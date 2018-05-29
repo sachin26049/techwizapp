@@ -23,7 +23,15 @@ router.post('/add', (req, res, next) => {
   
   for(var i=0;i<req.body.orders.length;i++)
   {
-   console.log(req.body.orders[i].foodname); 
+   //console.log(req.body.orders[i].foodname); 
+   if(req.body.orders[i].rating>0)
+   {
+    Menu.addRating(req.body.orders[i].foodname,req.body.orders[i].rating,(err,msg)=>
+    {
+  
+      if(err){ res.json({success: false, msg:'Failed to update rating'})}
+    });
+   }
   Menu.UpdateCount(req.body.orders[i].foodname,req.body.orders[i].Count,(err,msg)=>
   {
 
