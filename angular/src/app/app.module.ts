@@ -52,6 +52,7 @@ import { MyFilterFoodPipe } from './pipes/filterfood';
 import { MyFilterEmail } from './pipes/email';
 import { ViewordersComponent } from './vieworders/vieworders.component';
 import { OfferComponent } from './offer/offer.component';
+import { ViewstatsComponent } from './viewstats/viewstats.component';
 
 const appRoutes: Routes = [
   {path:'offer',component:OfferComponent},
@@ -70,6 +71,7 @@ const appRoutes: Routes = [
   {path: 'addtype' , component: AddtypeComponent},
   {path: 'modifytype' , component: ModifytypeComponent},
   {path:'vieworders',component: ViewordersComponent},
+  {path:'viewstats',component: ViewstatsComponent},
   {path: 'viewfeedback' , component: ViewfeedbackComponent},
   {path:'chef', component:ChefComponent},
   {path:'OrderStatus', component: OrderstatusComponent, canActivate: [AuthGuard]},
@@ -108,6 +110,8 @@ const appRoutes: Routes = [
     ViewordersComponent,
 
     OfferComponent,
+
+    ViewstatsComponent,
 
 
   ],
