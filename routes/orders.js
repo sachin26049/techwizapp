@@ -3,7 +3,7 @@ const router = express.Router();
 const config = require('../config/database');
 const Orders = require('../models/orders');
 const tempOrders=require('../models/tempOrders');
-
+const Menu=require('../models/Menu');
 // Register
 router.post('/add', (req, res, next) => {
     console.log(req.body);
@@ -20,7 +20,16 @@ router.post('/add', (req, res, next) => {
       res.json({success: true, msg:'order Added',order:order});
     }
   });
+  
+  for(var i=0;i<req.body.orders.length;i++)
+  {
+   console.log(req.body.orders[i].foodname); 
+  Menu.UpdateCount(req.body.orders[i].foodname,req.body.orders[i].Count,(err,msg)=>
+  {
 
+    if(err){ res.json({success: false, msg:'Failed to update count'})}
+  });
+  }
 });
 
 router.post('/addtemp',(req,res,next)=>{
