@@ -5,6 +5,7 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router} from '@angular/router';
 import {AdminmenuService} from '../services/adminmenu.service';
 import {MenusService} from '../services/menus.service';
+import {MyFilterPipe} from '../pipes/food';
 
 @Component({
   selector: 'app-modifyfood',
@@ -71,5 +72,16 @@ this.adminmenuService.updateFood(food).subscribe(data => {
 
 
   }
+
+  goBack()
+{
+  this.router.navigate(['/managemenu']);
+}
+
+goHome()
+{
+this.router.navigate(['/admin']);
+
+}
 
 }

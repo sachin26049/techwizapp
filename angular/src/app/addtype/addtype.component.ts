@@ -45,4 +45,15 @@ this.adminmenuService.addType(type).subscribe(data => {
     });
 }
 
+goBack()
+{
+  this.router.navigate(['/managemenu']);
+}
+
+goHome()
+{
+this.router.navigate(['/admin']);
+
+}
+
 }

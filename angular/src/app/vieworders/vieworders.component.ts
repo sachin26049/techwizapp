@@ -5,6 +5,7 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router} from '@angular/router';
 import {AdminmenuService} from '../services/adminmenu.service';
 import {MenusService} from '../services/menus.service';
+import {MyFilterEmail} from '../pipes/email';
 @Component({
   selector: 'app-vieworders',
   templateUrl: './vieworders.component.html',
@@ -12,6 +13,7 @@ import {MenusService} from '../services/menus.service';
 })
 export class ViewordersComponent implements OnInit {
   orderz:[any];
+  email:string;
 
   constructor(
     private validateService: ValidateService,
@@ -35,5 +37,10 @@ export class ViewordersComponent implements OnInit {
     });
 
   }
+
+  goBack()
+{
+  this.router.navigate(['/admin']);
+}
 
 }

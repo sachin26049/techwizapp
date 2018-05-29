@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
+//import {FlashMessagesService} from 'angular2-flash-messages';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,8 +12,67 @@ export class AppComponent {
 
   title = 'Techwizapp';
   flag:Number;
-  constructor(private router: Router,){this.flag=0;}
+  pass:string;
+  flag1:number;
+  pass1:string;
+  flag2:number;
+  constructor(private router: Router,/*private flashMessage: FlashMessagesService*/){this.flag=0;this.flag1=0;this.flag2=0;}
+  
+  checkpass()
+  {
+    if(this.pass=="hehe")
+   { 
+   /* this.flashMessage.show('You are now logged in', {
+      cssClass: 'alert-success',
+      timeout: 5000});*/
+    this.route(2);
+   
+  }
+  else
+  {
+    /*this.flashMessage.show('Wrong Password', {
+      cssClass: 'alert-danger',
+      timeout: 5000});*/
+
+
+  }     
+}
+ checkpass1()
+ {
+   if(this.pass1=="hehe")
+  {
+   /* this.flashMessage.show('You are now logged in', {
+      cssClass: 'alert-success',
+      timeout: 5000});*/  
+    this.route(3);
+  }
+  else
+
+  {
+    /*this.flashMessage.show('Wrong Password', {
+      cssClass: 'alert-danger',
+      timeout: 5000});*/
+
+  }
+}
+
+display()
+{
+this.flag1=1;
+
+}
+
+
+display1()
+{
+this.flag2=1;
+
+}
+
+
   route(code:Number)
+
+
   {
     console.log(code);
     switch(code)
@@ -20,7 +80,9 @@ export class AppComponent {
       case 1:this.router.navigate(['/home']);
       this.flag=1;
       break;
-      case 2:this.router.navigate(['/admin']);
+      case 2:
+      //this.flag=2;
+      this.router.navigate(['/admin']);
       this.flag=2;
       break;
       case 3:this.router.navigate(['/chef']);

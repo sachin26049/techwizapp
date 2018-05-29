@@ -16,8 +16,16 @@ const orderSchema = mongoose.Schema({
       Count :{
         type : Number,
         required:true
+      },
+      rating:{
+        type:Number,
+        required:true
       }
-  }]
+  }],
+  total:{
+    type:Number,
+    required:true
+  }
 },{ collection : 'orders' });
 
 
