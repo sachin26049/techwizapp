@@ -71,6 +71,25 @@ server=app.listen(port, () => {
   console.log('Server started on port '+port);
 });
 
+
+//run python scripts
+
+var PythonShell = require('python-shell');
+
+var options = {
+      mode: 'text',
+      //pythonPath: '/usr/bin/python', 
+      pythonOptions: ['-u'],
+      // make sure you use an absolute path for scriptPath
+      scriptPath: './python',
+      //args: ['value1', 'value2', 'value3']
+    };
+	
+PythonShell.run('techwiz+collaborative.py',options , function (err) {
+  if (err) throw err;
+  console.log('finished');
+});
+
 //setup socket 
 
 var io = require('socket.io').listen(server);
