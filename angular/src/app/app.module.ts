@@ -52,6 +52,7 @@ import { MyFilterFoodPipe } from './pipes/filterfood';
 import { MyFilterEmail } from './pipes/email';
 import { ViewordersComponent } from './vieworders/vieworders.component';
 import { OfferComponent } from './offer/offer.component';
+import { EndpageComponent } from './endpage/endpage.component';
 
 const appRoutes: Routes = [
   {path:'offer',component:OfferComponent},
@@ -74,6 +75,7 @@ const appRoutes: Routes = [
   {path:'chef', component:ChefComponent},
   {path:'OrderStatus', component: OrderstatusComponent, canActivate: [AuthGuard]},
   {path: 'payment', component: PaymentComponent},
+  {path:'end',component:EndpageComponent}
 
 ];
 
@@ -108,6 +110,8 @@ const appRoutes: Routes = [
     ViewordersComponent,
 
     OfferComponent,
+
+    EndpageComponent,
 
 
   ],

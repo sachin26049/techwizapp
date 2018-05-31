@@ -87,9 +87,9 @@ export class PaymentComponent implements OnInit {
     this.OS.finalOrder(order).subscribe(data=>{
       console.log(data);
     });
-    //this.OS.reset()
+    this.OS.reset();
     //this.AS.logout();
-    //this.router.navigate(['/login']);
+    this.router.navigate(['/end']);
     //this.router.navigate(['/payment']);
   }
 
