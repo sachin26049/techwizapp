@@ -22,12 +22,21 @@ const MenuSchema = mongoose.Schema({
   keywords:{
     type: [String]
   },
-
   count:{
-type :Number,
-default:0
-
+    type :Number,
+    default:0
+  },
+  ratingCount:{
+    type :Number,
+    default:0
+  },
+  rating:{
+    type :Number,
+    default:0
   }
+
+
+
 },{ collection : 'menu' });
 
 
@@ -49,7 +58,7 @@ module.exports.addFood = function(newFood, callback){
 
 module.exports.Load =function(callback)
 {
-Menu.find({},callback);
+Menu.find({},null,{sort : '-price'},callback);
 //console.log(callback);
 }
 
@@ -58,34 +67,57 @@ module.exports.Delete =function(name,callback)
 Menu.deleteOne({ "name" :name } ,callback);
 //console.log(callback);
 }
+module.exports.Sort=function(callback)
+{
+  
+  Menu.find({},null,{sort : '-count'},callback);
 
+
+}
 module.exports.Update =function(name,newFood,options,callback)
 { 
   var update={
     type: newFood.type,
     name: newFood.name,
-price: newFood.price,
-des:newFood.des
+    price: newFood.price,
+    des:newFood.des
 
   }
 Menu.findOneAndUpdate({ "name" :name } ,update,options,callback);
 //console.log(callback);
 }
 
-/*module.exports.UpdateCount =function(name,newFood,options,callback)
+module.exports.UpdateCount =function(name,count,callback)
 { 
+  console.log("in menu");
+  console.log(name);
+  const query = {"name": name}
+  
+  var old=Menu.findOne(query, (err,food)=>
+  {
+    console.log(err);
+    console.log(food);
+    food.count+=count;
+    food.save(callback);
+  });
 
-  const query = {name: name}
-  var old=Menu.findOne(query, callback);
+  //console.log(callback);
+}
+module.exports.addRating =function(name,rating,callback)
+{ 
+  console.log("in menurating");
+  console.log(name);
+  const query = {"name": name}
+  
+  var old=Menu.findOne(query, (err,food)=>
+  {
+    console.log(err);
+    console.log(food);
+    food.rating+=rating;
+    food.ratingCount++;
+    food.save(callback);
+  });
 
-
-  var update={
-    type: newFood.type,
-    name: newFood.name,
-price: newFood.price,
-des:newFood.des
-  }
-Menu.findOneAndUpdate({ "name" :name } ,update,options,callback);
-//console.log(callback);
-}*/
+  //console.log(callback);
+}
 

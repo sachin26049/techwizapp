@@ -14,10 +14,15 @@ getMenuH(){
   return this.http.get ('http://localhost:3000/menu/LoadMenu');
 }
 
+sort(){
+  return this.http.get ('http://localhost:3000/menu/Sort');
+}
 getorders(){
   return this.http.get ('http://localhost:3000/orders/LoadOrders');
 }
-
+getOffers(){
+  return this.http.get ('http://localhost:3000/offer/LoadOffer');
+}
 
 getType(){
   return this.http.get ('http://localhost:3000/menu/LoadType');

@@ -3,13 +3,14 @@ const router = express.Router();
 const config = require('../config/database');
 const Orders = require('../models/orders');
 const tempOrders=require('../models/tempOrders');
-
+const Menu=require('../models/Menu');
 // Register
 router.post('/add', (req, res, next) => {
     console.log(req.body);
   let order = new Orders({
     email:req.body.userEmail,
-    orders:req.body.orders
+    orders:req.body.orders,
+    total:req.body.total
   });
 
   Orders.addOrder(order, (err, food) => {
@@ -19,7 +20,24 @@ router.post('/add', (req, res, next) => {
       res.json({success: true, msg:'order Added',order:order});
     }
   });
+  
+  for(var i=0;i<req.body.orders.length;i++)
+  {
+   //console.log(req.body.orders[i].foodname); 
+   if(req.body.orders[i].rating>0)
+   {
+    Menu.addRating(req.body.orders[i].foodname,req.body.orders[i].rating,(err,msg)=>
+    {
+  
+      if(err){ res.json({success: false, msg:'Failed to update rating'})}
+    });
+   }
+  Menu.UpdateCount(req.body.orders[i].foodname,req.body.orders[i].Count,(err,msg)=>
+  {
 
+    if(err){ res.json({success: false, msg:'Failed to update count'})}
+  });
+  }
 });
 
 router.post('/addtemp',(req,res,next)=>{

@@ -1,12 +1,6 @@
-<div class="jumbotron" *ngIf="flag==0" style="padding:20%">
-<h2>Enter Password:</h2>  
-<input type="password" [(ngModel)]="pass" style="width:50%;height:40px;">
-<br>
-<button class="btn btn-info" (click)="checkpass()" style="width:40%;margin-top:30px;padding-left:5%;padding-right:5%">Submit</button>
-</div>
-<div *ngIf="flag==1">
+
 <div class="container">
-  <div class="jumbotron" style="margin-top:10%;align:center">
+  <div class="jumbotron" style="margin-top:5%;align:center">
   <h1 style="text-align:center">Welcome Admin</h1>      
   
 </div>
@@ -14,6 +8,8 @@
 	  <a class="btn btn-warning" [routerLink]="['/managemenu']">MANAGE MENU</a>
 	  <a class="btn btn-warning" [routerLink]="['/viewfeedback']">VIEW FEEDBACK</a>
 	  <a class="btn btn-warning" [routerLink]="['/vieworders']">VIEW ORDERS</a>
-	  <a class="btn btn-warning" [routerLink]="['/managemenu']">VIEW STATISTICS</a>
+    <a class="btn btn-warning" [routerLink]="['/viewstats']">VIEW STATISTICS</a>
+    <a class="btn btn-warning" [routerLink]="['/offer']">OFFERS</a>
+    
   </div>
 </div>

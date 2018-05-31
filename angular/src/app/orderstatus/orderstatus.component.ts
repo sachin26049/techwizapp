@@ -68,12 +68,12 @@ checkOut()
 {
   let user=JSON.parse(this.AS.getUser());
     //console.log(user);
-    let orderArray=[];
+   /* let orderArray=[];
     //let c=[new Number(this.Count.length)];
     /*for(let i=0;i<this.Count.length;i++)
     {
     c[i]=this.Count[i];  
-    }*/
+    }
     //console.log("p"+c);
     for(let i=0;i<this.Count.length;i++)
     {
@@ -98,6 +98,7 @@ checkOut()
     this.OS.finalOrder(order).subscribe(data=>{
       console.log(data);
     });
+    */
     //this.AS.logout();
     //this.router.navigate(['/login']);
     this.router.navigate(['/payment']);

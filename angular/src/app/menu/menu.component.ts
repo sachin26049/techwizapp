@@ -42,7 +42,7 @@ constructor(private MS: MenusService,private router: Router) {
               {
               this.Count[i]=0;
               }
-              //console.log("4"+this.Menu);
+              console.log(this.Menu);
               this.MS.setOrders(this.Menu,this.Count);
               }
             });
@@ -52,7 +52,7 @@ constructor(private MS: MenusService,private router: Router) {
                 //console.log("hhh");
               this.type=data['type'];
               //console.log(data['menu']);
-              //console.log(this.type);
+              console.log(this.type);
               }
               
              

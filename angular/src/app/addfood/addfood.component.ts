@@ -69,4 +69,10 @@ goBack()
 {
   this.router.navigate(['/managemenu']);
 }
+
+goHome()
+{
+this.router.navigate(['/admin']);
+
+}
 }

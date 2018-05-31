@@ -13,6 +13,7 @@ export class PaymentComponent implements OnInit {
 
   count:any[];
   menu:[any];
+  rating:any[];
   sum:number;
   display:boolean;
 
@@ -21,6 +22,9 @@ export class PaymentComponent implements OnInit {
   ngOnInit() {
     this.count=this.OS.getTotalCount();
     this.menu=this.MS.getMenu();
+    this.rating=new Array(this.menu.length);
+    for(var i=0;i<this.menu.length;i++)
+    this.rating[i]=0;
     this.display=false;
   }
 
@@ -49,9 +53,43 @@ export class PaymentComponent implements OnInit {
 
   pay()
   {
-    this.OS.reset()
-    this.AS.logout();
-    this.router.navigate(['/login']);
+    let user=JSON.parse(this.AS.getUser());
+    let orderArray=[];
+    //let c=[new Number(this.Count.length)];
+    /*for(let i=0;i<this.count.length;i++)
+    {
+    c[i]=this.count[i];  
+    }*/
+    //console.log("p"+c);
+    for(let i=0;i<this.count.length;i++)
+    {
+      if(this.count[i]!=0)
+      {
+        let o={
+          foodname:this.menu[i].name,
+          price:this.menu[i].price,
+          Count:this.count[i],
+          rating:this.rating[i]
+        };
+        orderArray.push(o);
+        //this.Count[i]=0;
+      }
+    }
+    //console.log(orderArray);
+   let order={
+     userEmail:user.email,
+     orders:orderArray,
+     total:this.sum
+    };
+
+    //console.log(order);
+    //console.log("p"+c);
+    this.OS.finalOrder(order).subscribe(data=>{
+      console.log(data);
+    });
+    //this.OS.reset()
+    //this.AS.logout();
+    //this.router.navigate(['/login']);
     //this.router.navigate(['/payment']);
   }
 
