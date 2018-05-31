@@ -4,6 +4,7 @@ const config = require('../config/database');
 const Orders = require('../models/orders');
 const tempOrders=require('../models/tempOrders');
 const Menu=require('../models/Menu');
+const User=require('../models/user');
 // Register
 router.post('/add', (req, res, next) => {
     console.log(req.body);
@@ -13,14 +14,20 @@ router.post('/add', (req, res, next) => {
     total:req.body.total
   });
 
-  Orders.addOrder(order, (err, food) => {
+  Orders.addOrder(order, (err, order) => {
     if(err){
       res.json({success: false, msg:'Failed to Add',order:order});
     } else {
       res.json({success: true, msg:'order Added',order:order});
     }
   });
-  
+  User.addOrder(order.email,order,(err,status)=>
+{
+if(err){
+  re.json({success: false, msg:'Failed to Add'});
+}
+});
+
   for(var i=0;i<req.body.orders.length;i++)
   {
    //console.log(req.body.orders[i].foodname); 

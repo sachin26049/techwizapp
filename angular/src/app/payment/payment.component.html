@@ -51,38 +51,11 @@
         </h3>
       </div>
       </div>
-      <div *ngIf="display">
-      <div class="form-group">
-        <label>Card Number:</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Expiry Date:</label>
-        <input type="month" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Name on the Card:</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>CVV:</label>
-        <input type="password" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Amount:</label>
-        <input type="text" class="form-control" value="{{sum}}" readonly>
-      </div>
-      <div>
-      <button class="btn btn-lg" style="background-color:#00D800;
-      color:white" (click)="pay()">Pay</button>
-      </div>
-      </div>
-      <div *ngIf="!display">
+           
           
+          <div class="container">
           <button class="btn btn-lg" style="background-color:#00D800;
-          color:white" (click)="Show()">Card Payment</button>
-          <button class="btn btn-lg" style="background-color:#00D800;
-            color:white" (click)="pay()">Cash Payment</button>
-        
-      </div>
+            color:white" (click)="pay()">Call waiter for Payment</button>
+          </div>
+      
 </div>

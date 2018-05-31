@@ -18,7 +18,29 @@ const UserSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  orders:[
+    {
+      timestamp:{ type : Date, default: Date.now },
+      orders:[{
+      foodname:{
+        type :String,
+        required:true
+      },
+      Count :{
+        type : Number,
+        required:true
+      },
+      rating:{
+        type:Number,
+        required:true
+      }
+      }],
+      total:{
+       type:Number,
+       required:true
+    } 
+    }]
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
@@ -40,6 +62,23 @@ module.exports.addUser = function(newUser, callback){
       newUser.save(callback);
     });
   });
+}
+
+module.exports.addOrder =function(email,order,callback)
+{ 
+  console.log("in user");
+  console.log(email);
+  const query = {"email": email}
+  
+  var old=User.findOne(query, (err,user)=>
+  {
+    console.log(err);
+    console.log(user);
+    user.orders.push(order);
+    user.save(callback);
+  });
+
+  //console.log(callback);
 }
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){
