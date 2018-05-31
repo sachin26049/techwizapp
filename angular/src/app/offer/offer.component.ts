@@ -41,7 +41,7 @@ const food={
 }
     this.adminmenuService.deleteOffer(food).subscribe(data => {
       this.flashMessage.show('Offer Deleted Successfully', {cssClass: 'alert-success', timeout: 3000});
-        this.router.navigate(['/offer']);
+        this.router.navigate(['/admin']);
      
      
     });
@@ -118,10 +118,10 @@ this.flag=0;
 this.adminmenuService.addOffer(food).subscribe(data => {
       if (data['success']) {
         this.flashMessage.show('Offer added Successfully', {cssClass: 'alert-success', timeout: 3000});
-        this.router.navigate(['/offer']);
+        this.router.navigate(['/admin']);
       } else {
         this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
-        this.router.navigate(['/offer']);
+        this.router.navigate(['/admin']);
       }
     });
 
