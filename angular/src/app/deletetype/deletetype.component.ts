@@ -48,7 +48,7 @@ Type:[any];
 this.adminmenuService.deleteType(type).subscribe(data => {
       if (data['success']) {
         this.flashMessage.show('Type Deleted Successfully', {cssClass: 'alert-success', timeout: 3000});
-        this.router.navigate(['/managemenu']);
+        this.router.navigate(['/deletetype']);
       } else {
         this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
         this.router.navigate(['/deletetype']);
