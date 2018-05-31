@@ -74,7 +74,7 @@ server=app.listen(port, () => {
 
 //run python scripts
 
-var PythonShell = require('python-shell');
+/*var PythonShell = require('python-shell');
 
 var options = {
       mode: 'text',
@@ -89,7 +89,13 @@ PythonShell.run('techwiz+collaborative.py',options , function (err) {
   if (err) throw err;
   console.log('finished');
 });
+*/
 
+
+var spawn = require("child_process").spawn;
+var process = spawn('python',["./python/techwiz+collaborative.py"] );
+var spawn = require("child_process").spawn;
+var process = spawn('python',["./python/techwiz+content+based.py"] );
 //setup socket 
 
 var io = require('socket.io').listen(server);
