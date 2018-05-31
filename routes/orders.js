@@ -11,6 +11,7 @@ router.post('/add', (req, res, next) => {
   let order = new Orders({
     email:req.body.userEmail,
     orders:req.body.orders,
+    tablenumber:req.body.tableno,
     total:req.body.total
   });
 
@@ -24,7 +25,7 @@ router.post('/add', (req, res, next) => {
   User.addOrder(order.email,order,(err,status)=>
 {
 if(err){
-  re.json({success: false, msg:'Failed to Add'});
+  res.json({success: false, msg:'Failed to Add'});
 }
 });
 

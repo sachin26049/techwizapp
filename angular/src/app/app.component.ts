@@ -16,8 +16,18 @@ export class AppComponent {
   flag1:number;
   pass1:string;
   flag2:number;
-  constructor(private router: Router,/*private flashMessage: FlashMessagesService*/){this.flag=0;this.flag1=0;this.flag2=0;}
+  flag0:number;
+  table:number;
+  constructor(private router: Router,/*private flashMessage: FlashMessagesService*/){
+    this.flag=0;this.flag1=0;this.flag2=0;this.flag0=0}
   
+  customer()
+  {
+    console.log(this.table);
+    //var tableno=this.table.toString();
+    localStorage.setItem('tablenumber',this.table.toString());
+    this.route(1);
+  }  
   checkpass()
   {
     if(this.pass=="hehe")
@@ -67,6 +77,10 @@ display1()
 {
 this.flag2=1;
 
+}
+display0()
+{
+  this.flag0=1;
 }
 
 

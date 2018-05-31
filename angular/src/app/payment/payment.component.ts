@@ -78,6 +78,7 @@ export class PaymentComponent implements OnInit {
     //console.log(orderArray);
    let order={
      userEmail:user.email,
+     tableno:localStorage.getItem('tablenumber'),
      orders:orderArray,
      total:this.sum
     };

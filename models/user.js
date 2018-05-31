@@ -19,6 +19,18 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  pre1:{
+    type: String,
+    required: true
+  },
+  pre2:{
+    type: String,
+    required: true
+  },
+  pre3:{
+    type: String,
+    required: true
+  },
   orders:[
     {
       timestamp:{ type : Date, default: Date.now },

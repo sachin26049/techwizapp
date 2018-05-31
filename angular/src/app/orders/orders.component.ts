@@ -22,7 +22,7 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit() {
 
-      this.Menu=this.MS.getMenu();
+    this.Menu=this.MS.getMenu();
 
     this.Count=this.MS.getCount();
 
@@ -101,6 +101,7 @@ decrCount(index:number)
    let order={
      userEmail:user.email,
      timeStamp:this.now, 
+     tableno:localStorage.getItem('tablenumber'),
      orderId:++this.OS.orderId,
      orders:orderArray
     };

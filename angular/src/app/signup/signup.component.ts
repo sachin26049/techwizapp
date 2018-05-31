@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ValidateService} from '../services/validate.service';
 import {AuthService} from '../services/auth.service';
+import {MenusService} from '../services/menus.service' ;
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router} from '@angular/router';
 
@@ -15,15 +16,27 @@ export class SignupComponent implements OnInit {
   username: String;
   email: String;
   password: String;
-
+  Type:[any];
+  pre1:any;
+  pre2:any;
+  pre3:any;
   constructor(
     private validateService: ValidateService,
     private flashMessage: FlashMessagesService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private MS:MenusService
   ) { }
 
   ngOnInit() {
+    this.MS.getType().subscribe(data=>{
+        console.log(data);
+        if(data['success']==true)
+        {
+          this.Type=data['type'];
+          console.log(this.Type);
+        }
+    });
   }
 
     onSignupSubmit() {
@@ -32,7 +45,11 @@ export class SignupComponent implements OnInit {
       name: this.name,
       email: this.email,
       username: this.username,
-      password: this.password
+      password: this.password,
+      pre1:this.pre1,
+      pre2:this.pre2,
+      pre3:this.pre3
+      
      };
   console.log(user);
     // Required Fields

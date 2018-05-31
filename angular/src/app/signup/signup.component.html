@@ -1,20 +1,42 @@
 <h2 class="page-header">Register</h2>
-<form (ngSubmit)="onSignupSubmit()">
   <div class="form-group">
-    <label>Name</label>
+    <label style=" font-size:20px;margin-top:5%;align:center">Name</label>
     <input type="text" [(ngModel)]="name" name="name" class="form-control">
   </div>
   <div class="form-group">
-    <label>UserName</label>
+    <label style=" font-size:20px;margin-top:5%;align:center">UserName</label>
     <input type="text" [(ngModel)]="username" name="username" class="form-control">
   </div>
   <div class="form-group">
-    <label>Email</label>
+    <label style=" font-size:20px;margin-top:5%;align:center">Email</label>
     <input type="text" [(ngModel)]="email" name="email" class="form-control" >
   </div>
   <div class="form-group">
-    <label>Password</label>
+    <label style=" font-size:20px;margin-top:5%;align:center">Password</label>
     <input type="password" [(ngModel)]="password" name="password" class="form-control">
   </div>
-  <input type="submit" class="btn btn-primary" value="Submit">
-</form>
+  <div class="form-group">
+  <label for="pre1" style=" font-size:20px;margin-top:5%;align:center">Select preference 1:</label>
+		<select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="pre1">
+		  <ng-container *ngFor="let y of Type;let j=index" >
+			  <option value="{{Type[j].type}}">{{Type[j].type}}</option>
+		  </ng-container>
+    </select>
+    </div>
+    <div class="form-group">
+      <label for="pre1" style=" font-size:20px;margin-top:5%;">Select preference 3:</label>
+		    <select class="form-control" style= "margin-top:5%;" [(ngModel)]="pre2">
+		      <ng-container *ngFor="let y of Type;let j=index" >
+			    <option value="{{Type[j].type}}">{{Type[j].type}}</option>
+		      </ng-container>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="pre1" style=" font-size:20px;margin-top:5%;">Select preference 3:</label>
+		    <select class="form-control" style= "margin-top:5%;"  [(ngModel)]="pre3">
+        <ng-container *ngFor="let y of Type;let j=index" >
+			  <option value="{{Type[j].type}}">{{Type[j].type}}</option>
+		  </ng-container>
+    </select>
+    </div>
+  <button  class="btn btn-primary" (click)="onSignupSubmit()" style="margin-bottom:20px;margin-left:25%;width:50%">Submit</button>
