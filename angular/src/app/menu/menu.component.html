@@ -21,6 +21,7 @@
                   <ng-template matExpansionPanelContent >
                     
                       <h3>Description :</h3><p><span style="font-size:20px">{{y.description}}</span></p>
+                      <h3>Rating</h3><span style="font-size:25px">{{y.rating/y.ratingCount}} out of 5</span>
                       <button (click)="decrCount(collabIndex[i])" style="font-size:20px;
                       border-color:white;background:#00D800;color:white">-</button>
                       <input readonly [(ngModel)]="Count[collabIndex[i]]" style="width:30px;border:none;font-size:20px;
@@ -80,6 +81,11 @@
                     <ng-template matExpansionPanelContent >
                       
                         <h3>Description :</h3><p><span style="font-size:20px">{{y.description}}</span></p>
+                        <h3>Rating:<span *ngIf="y.rating>0;else notRated">{{y.rating/y.ratingCount |number:'1.0-1'}} out of 5</span>
+                          <ng-template #notRated>
+                            Not Rated yet!
+                          </ng-template></h3>
+                        
                         <button (click)="decrCount(i)" style="font-size:20px;
                         border-color:white;background:#00D800;color:white">-</button>
                         <input readonly [(ngModel)]="Count[i]" style="width:30px;border:none;font-size:20px;
