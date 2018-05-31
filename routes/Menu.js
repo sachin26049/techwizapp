@@ -93,6 +93,20 @@ Menu.Load((err,menu)=>{
     res.json({success :true,menu:menu});
   }
 });
+});
+
+
+router.get('/Sort', (req, res, next) => {
+
+  Menu.Sort((err,menu)=>{
+    if(err){
+      res.json({success: false, msg:'Failed to load'});
+    } else {
+      res.json({success :true,menu:menu});
+    }
+  });
+
+  
 
 
 });

@@ -67,7 +67,13 @@ module.exports.Delete =function(name,callback)
 Menu.deleteOne({ "name" :name } ,callback);
 //console.log(callback);
 }
+module.exports.Sort=function(callback)
+{
+  
+  Menu.find({},null,{sort : '-count'},callback);
 
+
+}
 module.exports.Update =function(name,newFood,options,callback)
 { 
   var update={
