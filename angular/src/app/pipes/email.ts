@@ -7,8 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MyFilterEmail implements PipeTransform {
     transform(orders: any[],searchText: string): any {
 
-        if(searchText=="")
-        return null;
+        if(searchText==""|| !searchText)
+        return orders;
 
         
         return orders.filter(person => {
