@@ -29,6 +29,10 @@ const orderSchema = mongoose.Schema({
   total:{
     type:Number,
     required:true
+  },
+  feedback:{
+    type:String,
+    required:true
   }
 },{ collection : 'orders' });
 

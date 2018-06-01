@@ -12,7 +12,8 @@ router.post('/add', (req, res, next) => {
     email:req.body.userEmail,
     orders:req.body.orders,
     tablenumber:req.body.tableno,
-    total:req.body.total
+    total:req.body.total,
+    feedback:req.body.feedback
   });
 
   Orders.addOrder(order, (err, order) => {

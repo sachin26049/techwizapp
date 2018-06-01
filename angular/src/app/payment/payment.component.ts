@@ -16,7 +16,7 @@ export class PaymentComponent implements OnInit {
   rating:any[];
   sum:number;
   display:boolean;
-
+  feedback:string;
   constructor(private OSS:OrderSocketService , private router:Router,private AS:AuthService,private OS:OrdersService, private MS:MenusService) { }
 
   ngOnInit() {
@@ -80,10 +80,11 @@ export class PaymentComponent implements OnInit {
      userEmail:user.email,
      tableno:localStorage.getItem('tablenumber'),
      orders:orderArray,
-     total:this.sum
+     total:this.sum,
+     feedback:this.feedback
     };
 
-    //console.log(order);
+    console.log(order);
     //console.log("p"+c);
     this.OS.finalOrder(order).subscribe(data=>{
       console.log(data);

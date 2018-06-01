@@ -94,6 +94,7 @@ PythonShell.run('techwiz+collaborative.py',options , function (err) {
 
 var io = require('socket.io').listen(server);
   var chefid;
+  var adminid;
   var idList=new Array();
     // socket io connection funtions
   io.on('connection', function(socket){
