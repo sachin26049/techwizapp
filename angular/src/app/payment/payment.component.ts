@@ -3,7 +3,7 @@ import {OrdersService} from '../services/orders.service';
 import {MenusService} from '../services/menus.service';
 import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
-
+import {OrderSocketService} from '../services/order-socket.service';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -16,8 +16,8 @@ export class PaymentComponent implements OnInit {
   rating:any[];
   sum:number;
   display:boolean;
-
-  constructor(private router:Router,private AS:AuthService,private OS:OrdersService, private MS:MenusService) { }
+  feedback:string;
+  constructor(private OSS:OrderSocketService , private router:Router,private AS:AuthService,private OS:OrdersService, private MS:MenusService) { }
 
   ngOnInit() {
     this.count=this.OS.getTotalCount();
@@ -78,16 +78,20 @@ export class PaymentComponent implements OnInit {
     //console.log(orderArray);
    let order={
      userEmail:user.email,
+     tableno:localStorage.getItem('tablenumber'),
      orders:orderArray,
-     total:this.sum
+     total:this.sum,
+     feedback:this.feedback
     };
 
-    //console.log(order);
+    console.log(order);
     //console.log("p"+c);
     this.OS.finalOrder(order).subscribe(data=>{
       console.log(data);
     });
     this.OS.reset();
+    
+    this.OSS.payment({email:user.email,tableNo:localStorage.getItem('tablenumber')});
     //this.AS.logout();
     this.router.navigate(['/end']);
     //this.router.navigate(['/payment']);

@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" style="color:white">
 <div class="row">
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
   <h3>Table No.</h3>
@@ -15,10 +15,10 @@
     </div>
   </div>
 </div>
-<div class="row " *ngFor="let x of orderList;let i=index" >
+<div class="row " *ngFor="let x of orderList;let i=index" style="color:black">
   <div class="container jumbotron" style="padding:2px;padding-right:10px;padding-top:20px" *ngIf="flag[i]<2">
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-  <h4>{{x.userEmail}}</h4>
+  <h4>{{x.tableno}}</h4>
   </div>
   <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
     <div class="row" *ngFor="let y of x.orders;let j=index">
@@ -30,7 +30,7 @@
         </div>
         <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" id="i" *ngIf="flag[i]==0">
 
-          <input type="number" [(ngModel)]="orderStatus[i][j]">
+          <input type="number" [(ngModel)]="orderStatus[i][j]" style="width:80px">
         </div>
         
     </div>

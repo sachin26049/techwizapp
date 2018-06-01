@@ -44,6 +44,8 @@ loggedIn() {
   logout() {
     this.authToken = null;
     this.user = null;
+    var tableno=localStorage.getItem('tablenumber');
     localStorage.clear();
+    localStorage.setItem('tablenumber',tableno);
   }
 }

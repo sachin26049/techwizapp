@@ -9,13 +9,21 @@ const UserSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true
+    required: true,
   },
-  username: {
+  password: {
     type: String,
     required: true
   },
-  password: {
+  pre1:{
+    type: String,
+    required: true
+  },
+  pre2:{
+    type: String,
+    required: true
+  },
+  pre3:{
     type: String,
     required: true
   },
@@ -49,12 +57,21 @@ module.exports.getUserById = function(id, callback){
   User.findById(id, callback);
 }
 
-module.exports.getUserByUsername = function(username, callback){
-  const query = {username: username}
+module.exports.getUserByEmail = function(email, callback){
+  const query = {email:email}
   User.findOne(query, callback);
 }
 
 module.exports.addUser = function(newUser, callback){
+  var query={email:newUser.email};
+  User.find(query,(err,user)=>{;
+  if(user.length)
+  {
+    console.log('email found');
+    callback('email exists',null);
+  }
+  else
+  {
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(newUser.password, salt, (err, hash) => {
       if(err) throw err;
@@ -62,6 +79,8 @@ module.exports.addUser = function(newUser, callback){
       newUser.save(callback);
     });
   });
+  }
+});
 }
 
 module.exports.addOrder =function(email,order,callback)

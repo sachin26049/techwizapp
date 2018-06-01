@@ -8,6 +8,10 @@ const orderSchema = mongoose.Schema({
     required: true
   },
   timestamp:{ type : Date, default: Date.now },
+  tablenumber:{
+    type :String,
+    required:true
+  },
   orders:[{
       foodname:{
         type :String,
@@ -24,6 +28,10 @@ const orderSchema = mongoose.Schema({
   }],
   total:{
     type:Number,
+    required:true
+  },
+  feedback:{
+    type:String,
     required:true
   }
 },{ collection : 'orders' });

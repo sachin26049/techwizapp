@@ -10,14 +10,23 @@ router.post('/register', (req, res, next) => {
   let newUser = new User({
     name: req.body.name,
     email: req.body.email,
-    username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    pre1   :   req.body.pre1,
+    pre2   :   req.body.pre2,
+    pre3   :   req.body.pre3,
   });
 
   User.addUser(newUser, (err, user) => {
+    console.log(user);
     if(err){
+      console.log(err);
+      if(err=="email exists")
+      res.json({success: false, msg:'Email already exists'});
+      else
       res.json({success: false, msg:'Failed to register user'});
-    } else {
+    } 
+    else {
+      console.log(3);
       res.json({success: true, msg:'User registered'});
     }
   });
@@ -25,10 +34,10 @@ router.post('/register', (req, res, next) => {
 
 // Authenticate
 router.post('/authenticate', (req, res, next) => {
-  const username = req.body.username;
+  const email = req.body.username;
   const password = req.body.password;
 
-  User.getUserByUsername(username, (err, user) => {
+  User.getUserByEmail(email, (err, user) => {
     if(err) throw err;
     if(!user){
       return res.json({success: false, msg: 'User not found'});
@@ -47,7 +56,6 @@ router.post('/authenticate', (req, res, next) => {
           user: {
             id: user._id,
             name: user.name,
-            username: user.username,
             email: user.email
           }
         });

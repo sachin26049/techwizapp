@@ -1,6 +1,7 @@
-<div *ngIf="type&&Menu">
+<div *ngIf="type&&Menu" > 
   <ngc-float-button icon="add_shopping_cart" (click)="goToOrders()" >
     </ngc-float-button>
+    <div class="container" style="background-color:white;min-height:500px">
 <mat-tab-group class="demo-tab-group" >
     <mat-tab  label="Recommended" >
         <mat-accordion>
@@ -65,7 +66,7 @@
           </ng-template>
           </mat-accordion>
       </mat-tab>
-    <mat-tab *ngFor="let x of type;let k=index" label={{x.type}} >
+    <mat-tab *ngFor="let x of type;let k=index" label={{x.type}} style="color:white">
           <mat-accordion>
             <ng-container *ngFor="let y of Menu;let i=index" >
                 <div *ngIf = "y.type==x.type">
@@ -81,7 +82,7 @@
                     <ng-template matExpansionPanelContent >
                       
                         <h3>Description :</h3><p><span style="font-size:20px">{{y.description}}</span></p>
-                        <h3>Rating:<span *ngIf="y.rating>0;else notRated">{{y.rating/y.ratingCount |number:'1.0-1'}} out of 5</span>
+                        <h3>Rating:  <span *ngIf="y.rating>0;else notRated" style="color:#00D800">{{y.rating/y.ratingCount |number:'1.0-1'}}/5</span>
                           <ng-template #notRated>
                             Not Rated yet!
                           </ng-template></h3>

@@ -54,7 +54,8 @@ import { ViewordersComponent } from './vieworders/vieworders.component';
 import { OfferComponent } from './offer/offer.component';
 import { EndpageComponent } from './endpage/endpage.component';
 import { ViewstatsComponent } from './viewstats/viewstats.component';
-
+import { AdminNotificationsComponent } from './admin-notifications/admin-notifications.component';
+import {  AdminsocketService} from './admin-notifications/adminsocket.service';
 const appRoutes: Routes = [
   {path:'offer',component:OfferComponent},
   {path: 'home' , component: HomepageComponent},
@@ -115,6 +116,7 @@ const appRoutes: Routes = [
 
     EndpageComponent,
     ViewstatsComponent,
+    AdminNotificationsComponent,
 
 
   ],
@@ -134,7 +136,7 @@ const appRoutes: Routes = [
     ],
 
 
-  providers: [ValidateService, AuthService,ChefsService, AuthGuard,ChefSocketService,MenusService,OrdersService,OrderSocketService,AdminmenuService],
+  providers: [AdminsocketService,ValidateService, AuthService,ChefsService, AuthGuard,ChefSocketService,MenusService,OrdersService,OrderSocketService,AdminmenuService],
 
   bootstrap: [AppComponent]
 })
