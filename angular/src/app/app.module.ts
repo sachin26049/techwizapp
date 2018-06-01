@@ -54,6 +54,7 @@ import { ViewordersComponent } from './vieworders/vieworders.component';
 import { OfferComponent } from './offer/offer.component';
 import { EndpageComponent } from './endpage/endpage.component';
 import { ViewstatsComponent } from './viewstats/viewstats.component';
+import { AdminNotificationsComponent } from './admin-notifications/admin-notifications.component';
 
 const appRoutes: Routes = [
   {path:'offer',component:OfferComponent},
@@ -115,6 +116,7 @@ const appRoutes: Routes = [
 
     EndpageComponent,
     ViewstatsComponent,
+    AdminNotificationsComponent,
 
 
   ],
