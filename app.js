@@ -103,6 +103,17 @@ var io = require('socket.io').listen(server);
         console.log("chef  "+'connected');
       });
 
+
+      socket.on("admin",function(msg){
+        adminid=socket.id;
+        console.log("admin  "+'connected');
+      });
+
+      socket.on("payment",function(msg){
+        io.to(adminid).emit("notification",msg);
+      });
+
+
       socket.on("user",function(msg){
           console.log(msg+"  "+'connected');
           let p={

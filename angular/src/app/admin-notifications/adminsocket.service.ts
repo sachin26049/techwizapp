@@ -10,11 +10,11 @@ export class AdminsocketService {
     console.log("hi");
     this.socket.emit("admin", "hi");   
   }
-  getOrders() {
+  getnotification() {
     return Observable.create((observer) => {
-      this.socket.on('order', (order) => {
+      this.socket.on('notification', (noti) => {
           console.log("new");
-          observer.next(order);
+          observer.next(noti);
       });
   });
   }

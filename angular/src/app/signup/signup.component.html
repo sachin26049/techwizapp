@@ -1,42 +1,41 @@
-<h2 class="page-header">Register</h2>
+<div class="container">
+<h2 class="page-header" style="color:white;text-align:center;font-size:40px">Register</h2>
   <div class="form-group">
-    <label style=" font-size:20px;margin-top:5%;align:center">Name</label>
-    <input type="text" [(ngModel)]="name" name="name" class="form-control">
+    <h3 style="color:white;text-align:center;font-size:30px">Name</h3>
+    <input type="text" [(ngModel)]="name" name="name" class="form-control" style="width:50%;margin-left:25%;">
+  </div>
+  
+  <div class="form-group">
+    <h3 style="color:white;text-align:center;font-size:30px">Email</h3>
+    <input type="text" [(ngModel)]="email" name="email" class="form-control" style="width:50%;margin-left:25%;">
   </div>
   <div class="form-group">
-    <label style=" font-size:20px;margin-top:5%;align:center">UserName</label>
-    <input type="text" [(ngModel)]="username" name="username" class="form-control">
+    <h3 style="color:white;text-align:center;font-size:30px">Password</h3>
+    <input type="password" [(ngModel)]="password" name="password" class="form-control" style="width:50%;margin-left:25%;">
   </div>
   <div class="form-group">
-    <label style=" font-size:20px;margin-top:5%;align:center">Email</label>
-    <input type="text" [(ngModel)]="email" name="email" class="form-control" >
-  </div>
-  <div class="form-group">
-    <label style=" font-size:20px;margin-top:5%;align:center">Password</label>
-    <input type="password" [(ngModel)]="password" name="password" class="form-control">
-  </div>
-  <div class="form-group">
-  <label for="pre1" style=" font-size:20px;margin-top:5%;align:center">Select preference 1:</label>
-		<select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="pre1">
+  <h3 for="pre1" style="color:white;text-align:center;font-size:30px">Select preference 1:</h3>
+		<select class="form-control" style="width:50%;margin-left:25%;" name="pre1" [(ngModel)]="pre1">
 		  <ng-container *ngFor="let y of Type;let j=index" >
 			  <option value="{{Type[j].type}}">{{Type[j].type}}</option>
 		  </ng-container>
     </select>
     </div>
     <div class="form-group">
-      <label for="pre1" style=" font-size:20px;margin-top:5%;">Select preference 3:</label>
-		    <select class="form-control" style= "margin-top:5%;" [(ngModel)]="pre2">
+      <h3 for="pre1" style="color:white;text-align:center;font-size:30px">Select preference 3:</h3>
+		    <select class="form-control" style="width:50%;margin-left:25%;" [(ngModel)]="pre2">
 		      <ng-container *ngFor="let y of Type;let j=index" >
 			    <option value="{{Type[j].type}}">{{Type[j].type}}</option>
 		      </ng-container>
         </select>
     </div>
     <div class="form-group">
-        <label for="pre1" style=" font-size:20px;margin-top:5%;">Select preference 3:</label>
-		    <select class="form-control" style= "margin-top:5%;"  [(ngModel)]="pre3">
+        <h3 for="pre1" style="color:white;text-align:center;font-size:30px">Select preference 3:</h3>
+		    <select class="form-control" style="width:50%;margin-left:25%;"  [(ngModel)]="pre3">
         <ng-container *ngFor="let y of Type;let j=index" >
 			  <option value="{{Type[j].type}}">{{Type[j].type}}</option>
 		  </ng-container>
     </select>
     </div>
-  <button  class="btn btn-primary" (click)="onSignupSubmit()" style="margin-bottom:20px;margin-left:25%;width:50%">Submit</button>
+  <button  class="btn btn-primary" (click)="onSignupSubmit()" style="margin-left:35%;margin-bottom:30px;width:30%;background:#FBA100;">Submit</button>
+</div>

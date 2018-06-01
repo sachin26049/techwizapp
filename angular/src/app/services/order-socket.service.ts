@@ -32,6 +32,10 @@ orderDelivered(){
 });
 }
 
+payment(msg:any)
+{
+  this.socket.emit("payment",msg);
+}
 close() {
   this.socket.disconnect();
 }
