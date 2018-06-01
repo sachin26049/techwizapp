@@ -6,11 +6,11 @@ import numpy as np
 from pymongo import MongoClient
 connection=MongoClient('localhost')
 db=connection.techwiz
-x=db.menu
-y=x.find({})
-#print(y)
+db.recommend.drop()
+y=db.menu.find({})
+print(y)
 z=[]
-#print(y[1])
+print y[0]
 for i in y:
     #print(i["price"])
     #z["price"]=i["price"]
@@ -30,6 +30,10 @@ df['price'] = df['price'].astype(str)
 df['name'] = df['name'].astype(str)
 df['type'] = df['type'].astype(str)
 df['description'] = df['description'].astype(str)
+df['count'] = df['count'].astype(str)
+df['rating'] = df['rating'].astype(str)
+df['__v'] = df['__v'].astype(str)
+df['keywords'] = df['keywords'].astype(str)
 print(df.dtypes)
 users=db.users.find({})
 order=db.orders
@@ -81,7 +85,7 @@ for i in users:
     for i in recommended_items:
         x.append(i)
     #print(recommend)
-    recommend['items']=x
+    recommend['items']=x[:5]
     print(recommend)
     json_data = json.dumps(recommend,indent=4)
     db.recommend.insert_one(recommend)
