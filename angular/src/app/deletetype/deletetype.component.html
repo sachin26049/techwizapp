@@ -22,15 +22,15 @@
 <form (ngSubmit)="onSignupSubmit()">
 <div class="form-group">
 	
-	<label for="pre1" style=" font-size:20px;margin-top:5%;align:center">Select Food Type</label>
-	<select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="type">
+	<label for="pre1" style=" font-size:25px;margin-top:5%;text-align:center;color:white;margin-left:25%;margin-right:25%;width:50%">Select Food Type</label>
+	<select class="form-control" style= "margin-top:5%;text-align:center;margin-left:25%;margin-right:25%;width:50%" name="pre1" [(ngModel)]="type">
 		<ng-container *ngFor="let y of Type;let j=index" >
 			<option value="{{Type[j].type}}">{{Type[j].type}}</option>
 		</ng-container>
 	  </select>
 
 
-	<input type="submit" class="btn btn-primary" value="Submit" style="margin-top:5%">
+	<input type="submit" class="btn btn-primary" value="Submit" style="margin-top:5%;text-align:center;margin-left:25%;margin-right:25%;width:50%">
 	</div>
 	</form>
 	<br>

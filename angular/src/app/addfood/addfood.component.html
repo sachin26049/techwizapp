@@ -21,8 +21,8 @@
 
 <div class="form-group">
 	
-	<label for="pre1" style=" font-size:20px;margin-top:5%;align:center">Select Food Type</label>
-	<select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="type">
+	<label for="pre1" style=" font-size:25px;margin-top:5%;text-align:center;color:white;margin-left:25%;margin-right:25%;width:50%">Select Food Type</label>
+	<select class="form-control" style= "margin-top:5%;text-align:center;margin-left:25%;margin-right:25%;width:50%" name="pre1" [(ngModel)]="type">
 		<ng-container *ngFor="let x of Type;let i=index" >
 				<option value="{{Type[i].type}}">{{Type[i].type}}</option>
 		</ng-container>
@@ -30,15 +30,15 @@
 	</select>
 	
 	
-	<label style="margin-top:5%;text-align:center">Enter Food Name</label>
-    <input type="text" name="name" class="form-control" style="margin-top:5%;text-align:center" [(ngModel)]="food">
+	<label style="margin-top:5%;text-align:center;font-size:25px;color:white;margin-left:25%;margin-right:25%;width:50%">Enter Food Name</label>
+    <input type="text" name="name" class="form-control" style="margin-top:5%;text-align:center;margin-left:25%;margin-right:25%;width:50%" [(ngModel)]="food">
   
   	
-	 <label style="margin-top:5%;text-align:center">Enter Price</label>
-    <input type="text" name="name" class="form-control" style="margin-top:5%;text-align:center" [(ngModel)]="price">
+	 <label style="margin-top:5%;text-align:center;font-size:25px;color:white;margin-left:25%;margin-right:25%;width:50%">Enter Price</label>
+    <input type="text" name="name" class="form-control" style="margin-top:5%;text-align:center;margin-left:25%;margin-right:25%;width:50%" [(ngModel)]="price">
 	
 	
-	<input type="submit" class="btn btn-primary" value="Submit" style="margin-top:5%;text-align:center">
+	<input type="submit" class="btn btn-primary" value="Submit" style="margin-top:5%;text-align:center;margin-left:25%;margin-right:25%;width:50%">
 	</div>
 	</form>
 	
