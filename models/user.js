@@ -9,11 +9,8 @@ const UserSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true
-  },
-  username: {
-    type: String,
-    required: true
+    required: true,
+    index: { unique: true }
   },
   password: {
     type: String,
@@ -67,6 +64,15 @@ module.exports.getUserByUsername = function(username, callback){
 }
 
 module.exports.addUser = function(newUser, callback){
+  var query={email:newUser.email};
+  User.find(query,(err,user)=>{;
+  if(user.length)
+  {
+    console.log('email found');
+    callback('email exists',null);
+  }
+  else
+  {
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(newUser.password, salt, (err, hash) => {
       if(err) throw err;
@@ -74,6 +80,8 @@ module.exports.addUser = function(newUser, callback){
       newUser.save(callback);
     });
   });
+  }
+});
 }
 
 module.exports.addOrder =function(email,order,callback)

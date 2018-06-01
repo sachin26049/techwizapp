@@ -10,7 +10,6 @@ router.post('/register', (req, res, next) => {
   let newUser = new User({
     name: req.body.name,
     email: req.body.email,
-    username: req.body.username,
     password: req.body.password,
     pre1   :   req.body.pre1,
     pre2   :   req.body.pre2,
@@ -18,9 +17,16 @@ router.post('/register', (req, res, next) => {
   });
 
   User.addUser(newUser, (err, user) => {
+    console.log(user);
     if(err){
+      console.log(err);
+      if(err=="email exists")
+      res.json({success: false, msg:'Email already exists'});
+      else
       res.json({success: false, msg:'Failed to register user'});
-    } else {
+    } 
+    else {
+      console.log(3);
       res.json({success: true, msg:'User registered'});
     }
   });
