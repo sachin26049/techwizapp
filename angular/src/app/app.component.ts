@@ -18,6 +18,8 @@ export class AppComponent {
   flag2:number;
   flag0:number;
   table:number;
+  user:string;
+  user1:string;
   constructor(private router: Router,/*private flashMessage: FlashMessagesService*/){
     this.flag=0;this.flag1=0;this.flag2=0;this.flag0=0}
   
@@ -30,7 +32,7 @@ export class AppComponent {
   }  
   checkpass()
   {
-    if(this.pass=="hehe")
+    if(this.pass=="hehe"&&this.user=="admin")
    { 
    /* this.flashMessage.show('You are now logged in', {
       cssClass: 'alert-success',
@@ -43,13 +45,13 @@ export class AppComponent {
     /*this.flashMessage.show('Wrong Password', {
       cssClass: 'alert-danger',
       timeout: 5000});*/
-
+      alert("wrong username or password");
 
   }     
 }
  checkpass1()
  {
-   if(this.pass1=="hehe")
+   if(this.pass=="hehe"&&this.user=="chef")
   {
    /* this.flashMessage.show('You are now logged in', {
       cssClass: 'alert-success',
@@ -62,7 +64,7 @@ export class AppComponent {
     /*this.flashMessage.show('Wrong Password', {
       cssClass: 'alert-danger',
       timeout: 5000});*/
-
+      alert("wrong username or password");
   }
 }
 
