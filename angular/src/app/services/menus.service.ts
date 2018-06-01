@@ -35,6 +35,11 @@ getCollabRecommendations(){
   var email=JSON.parse(this.AS.getUser()).email;
   return this.http.post('http://localhost:3000/menu/LoadCollabRecommendation',{"email":email});
 }
+
+getTopRated(type)
+{
+  return this.http.post('http://localhost:3000/menu/getTopRated',{"type":type});
+}
 setOrders(m:[Object],c:[Number])
 {
 this.Menu=m;

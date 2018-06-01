@@ -5,7 +5,7 @@
 <mat-tab-group class="demo-tab-group" >
     <mat-tab  label="Recommended" >
         <mat-accordion>
-            <ng-container *ngIf="Recommendations&&flag&&CollabRecommendations&&collabFlag ; else norecom">
+            <ng-container *ngIf="Recommendations&&flag&&CollabRecommendations&&collabFlag ;">
           <h3 style="color:#00D800">Recommended Dishes for you!!</h3>
           
           <ng-container *ngFor="let y of CollabRecommendations;let i=index" >
@@ -61,9 +61,31 @@
               </div>
             </ng-container>
           </ng-container>
-          <ng-template #norecom>
-            <h2>No Recommendations For You!</h2>
-          </ng-template>
+          <div *ngIf="pre1&&preFlag">
+          <ng-container *ngFor="let y of pre1;let i=index">
+              <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title style="width:80%">
+                      {{y.name}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      <i class="fa fa-inr" aria-hidden="true" style="margin-top:2px"></i>{{y.price}}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <ng-template matExpansionPanelContent >
+                    
+                      <h3>Description :</h3><p><span style="font-size:20px">{{y.description}}</span></p>
+                      <button (click)="decrCount(preIndex[i])" style="font-size:20px;
+                      border-color:white;background:#00D800;color:white">-</button>
+                      <input readonly [(ngModel)]="Count[preIndex[i]]" style="width:30px;border:none;font-size:20px;
+                      background:white;margin:0px;"class="form-group-sm">
+                      <button (click)="incrCount(preIndex[i])" style="font-size:20px;
+                      border-color:white;background:#00D800;color:white">+</button>
+                    
+                </ng-template>
+                </mat-expansion-panel>
+          </ng-container>
+          </div>
           </mat-accordion>
       </mat-tab>
     <mat-tab *ngFor="let x of type;let k=index" label={{x.type}} style="color:white">
