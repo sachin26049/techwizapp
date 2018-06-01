@@ -25,7 +25,7 @@ router.post('/add', (req, res, next) => {
   User.addOrder(order.email,order,(err,status)=>
 {
 if(err){
-  res.json({success: false, msg:'Failed to Add'});
+  //res.json({success: false, msg:'Failed to Add'});
 }
 });
 
@@ -37,13 +37,13 @@ if(err){
     Menu.addRating(req.body.orders[i].foodname,req.body.orders[i].rating,(err,msg)=>
     {
   
-      if(err){ res.json({success: false, msg:'Failed to update rating'})}
+      //if(err){ res.json({success: false, msg:'Failed to update rating'})}
     });
    }
   Menu.UpdateCount(req.body.orders[i].foodname,req.body.orders[i].Count,(err,msg)=>
   {
 
-    if(err){ res.json({success: false, msg:'Failed to update count'})}
+    //if(err){ res.json({success: false, msg:'Failed to update count'})}
   });
   }
 });
