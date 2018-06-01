@@ -9,9 +9,25 @@
 </div>
 
 
-<div class="container"  style="border-style : groove">
-<div class="jumbotron">
+<div class="container">
 <div class="row">
+<div class="col-xs-4 col-md-4 col-lg-4 col-sm-4"></div>
+<div class="col-xs-4 col-md-4 col-lg-4 col-sm-4">
+
+    <button class="btn btn-info" (click)="viewcount()"  style="margin:5%">Count</button>
+
+    <button class="btn btn-info" (click)="viewRanking()"  style="margin:5%">Rating</button>
+
+
+</div>
+</div>
+
+</div>
+
+
+<div *ngIf="flag==1"class="container"  style="border-style : groove"  >
+<div class="jumbotron">
+<div class="row " style="font-size:20px">
 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">FOOD NAME</div>
 
 
@@ -32,23 +48,25 @@
 </div>
 
 
-<div class="container">
+<div class="container " style="font-size:15px">
   <div class="row">
     <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
-        <label for="pre1" style=" font-size:20px;margin-top:5%">Select Food Type</label>
-        <select class="form-control" style= "margin-top:5% ;margin-bottom:5%" name="pre1" [(ngModel)]="type">
+        <label for="pre1" style=" font-size:20px;margin-top:5%;color:white">Select Food Type</label>
+        <select class="form-control" style= "margin-top:5% ;margin-bottom:5%;width:65%" name="pre1" [(ngModel)]="type">
           <ng-container *ngFor="let y of Type;let j=index" >
             <option value="{{Type[j].type}}">{{Type[j].type}}</option>
           </ng-container>
         </select>
     </div>
 
+<div class="col-sm-2 col-xs-2 col-lg-2 col-md-2">
     <button class="btn btn-info" (click)="sort()" style="margin:5%">Sort</button>
   </div>
 </div>
+</div>
 
-<div class="row" style="margin-bottom:2%; border-bottom-style : groove" *ngFor="let x of Menu | myfilter:type">
+<div class="row" style="margin-bottom:2%; border-bottom-style : groove;font-size:15px;color:white" *ngFor="let x of Menu | myfilter:type">
   <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
     {{x.name}}
   </div>
@@ -65,5 +83,67 @@
 
 
 </div>
+
+
+
+
+<div *ngIf="flag==2"class="container"  style="border-style : groove"  >
+    <div class="jumbotron">
+    <div class="row " style="font-size:20px">
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">FOOD NAME</div>
+    
+    
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">FOOD TYPE</div>
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">RATING</div>
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    </div>
+    
+    
+    <div class="container " style="font-size:15px">
+      <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
+            <label for="pre1" style=" font-size:20px;margin-top:5%;color:white">Select Food Type</label>
+            <select class="form-control" style= "margin-top:5% ;margin-bottom:5%;width:65%" name="pre1" [(ngModel)]="type">
+              <ng-container *ngFor="let y of Type;let j=index" >
+                <option value="{{Type[j].type}}">{{Type[j].type}}</option>
+              </ng-container>
+            </select>
+        </div>
+    
+    </div>
+    </div>
+    
+    <div class="row" style="margin-bottom:2%; border-bottom-style : groove;font-size:15px;color:white" *ngFor="let x of Menu | myfilter:type">
+      <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
+        {{x.name}}
+      </div>
+     
+         
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">{{x.type}}</div>
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4" *ngIf="x.rating>0">{{x.rating/x.ratingCount |number:'1.0-1'}}</div>
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4" *ngIf="x.rating<=0">Not Rated Yet</div>
+            
+         
+          </div>
+        
+      
+    
+    
+    
+    </div>
+    
+
 
 

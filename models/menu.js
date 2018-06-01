@@ -75,10 +75,10 @@ module.exports.Sort=function(callback)
 
 }
 
-module.exports.GetTopByRating=function(type1,type2,type3,callback)
+module.exports.GetTopByRating=function(type,callback)
 {
   
-  Menu.find({},null,{sort : '-count'},callback);
+  Menu.find({type:type},null,{sort : '-rating',limit:3},callback);
 
 
 }

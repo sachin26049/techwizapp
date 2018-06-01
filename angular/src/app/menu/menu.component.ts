@@ -20,7 +20,13 @@ collabIndex:any[];
 flag:any;
 collabFlag:any;
 duplicate:any[];
-constructor(private MS: MenusService,private router: Router) {
+pre1:any[];
+pre2:any[];
+pre3:any[];
+preIndex:any[];
+preFlag:any;
+preduplicate:any[];
+constructor(private MS: MenusService,private router: Router,private AS:AuthService) {
 
 
 
@@ -42,7 +48,7 @@ constructor(private MS: MenusService,private router: Router) {
               {
               this.Count[i]=0;
               }
-              console.log(this.Menu);
+              //console.log(this.Menu);
               this.MS.setOrders(this.Menu,this.Count);
               }
             });
@@ -52,12 +58,52 @@ constructor(private MS: MenusService,private router: Router) {
                 //console.log("hhh");
               this.type=data['type'];
               //console.log(data['menu']);
-              console.log(this.type);
+              //console.log(this.type);
               }
               
              
 
             });
+            //preferences
+            var user=JSON.parse(this.AS.getUser());
+            this.MS.getTopRated(user.pre1).subscribe(data=>{
+              if(data['success']==true)
+              {
+                this.pre1=data['food'];
+                console.log(this.pre1);
+              
+
+            this.MS.getTopRated(user.pre2).subscribe(data=>{
+              if(data['success']==true)
+              {
+                this.pre2=data['food'];
+                for(var i=0;i<this.pre2.length;i++)
+                this.pre1.push(this.pre2[i]);
+                console.log(this.pre1);
+              }
+            });
+
+            this.MS.getTopRated(user.pre3).subscribe(data=>{
+              if(data['success']==true)
+              {
+                this.pre3=data['food'];
+                for(var i=0;i<this.pre3.length;i++)
+                this.pre1.push(this.pre3[i]);
+
+                console.log(this.pre1);
+                this.preIndex=new Array(this.pre1.length);
+                this.preduplicate=new Array(this.pre1.length);
+                
+                for(var i=0;i<this.pre1.length;i++)
+                {
+                  this.preIndex[i]=this.Menu.findIndex((element)=>{return element.name==this.pre1[i].name}); 
+                }
+                console.log(this.preIndex);
+                this.preFlag=1;
+                }
+            });
+          }
+        });
             //content-Based
             this.MS.getRecommendations().subscribe(data=>{
               if(data['success'])
@@ -74,14 +120,15 @@ constructor(private MS: MenusService,private router: Router) {
                 this.flag=1;
               }
              });
+
              //collab
              this.MS.getCollabRecommendations().subscribe(data=>{
               if(data['success'])
               { console.log(data['recommendation'][0].items);
                 this.CollabRecommendations=data['recommendation'][0].items;
-                console.log(this.Recommendations);
-                this.collabIndex=new Array(this.Recommendations.length);
-                this.duplicate=new Array(this.Recommendations.length);
+                console.log(this.CollabRecommendations);
+                this.collabIndex=new Array(this.CollabRecommendations.length);
+                this.duplicate=new Array(this.CollabRecommendations.length);
                 for(var i=0;i<this.CollabRecommendations.length;i++)
                 {
                   this.collabIndex[i]=this.Menu.findIndex((element)=>{return element.name==this.CollabRecommendations[i].name});

@@ -15,6 +15,7 @@ import {MyFilterPipe} from '../pipes/food';
 })
 export class ViewstatsComponent implements OnInit {
 type: String;
+flag:number;
 
 Menu:[any];
 Type:[any];
@@ -32,7 +33,7 @@ Type:[any];
   ) { }
 
   ngOnInit() {
-
+    this.flag=1;
     this.type="";
 
     this.MS.getMenuH().subscribe(data=>{
@@ -58,6 +59,11 @@ Type:[any];
 
   }
 
+  viewcount(){this.flag=1};
+  
+  
+  viewRanking()
+{this.flag=2};
   sort()
   {
     this.MS.sort().subscribe(data=>{

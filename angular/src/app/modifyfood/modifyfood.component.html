@@ -22,18 +22,18 @@
 <form (ngSubmit)="onSubmit()">
 
 <div class="form-group">
-		<label for="pre1" style=" font-size:20px;margin-top:5%;align:center">Select Food Type</label>
-		<select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="type">
+		<label for="pre1" style=" font-size:25px;margin-top:5%;text-align:center;color:white;margin-left:25%;margin-right:25%;width:50%">Select Food Type</label>
+		<select class="form-control" style= "margin-top:5%;text-align:center;margin-left:25%;margin-right:25%;width:50%" name="pre1" [(ngModel)]="type">
 		  <ng-container *ngFor="let y of Type;let j=index" >
 			  <option value="{{Type[j].type}}">{{Type[j].type}}</option>
 		  </ng-container>
 		</select>
 		
 	<!--	<div *ngIf="Menu&&type"> -->
-			<label for="pre1" style=" font-size:20px;margin-top:5%;align:center">Select Food</label>
+			<label for="pre1" style=" font-size:25px;margin-top:5%;text-align:center;color:white;margin-left:25%;margin-right:25%;width:50%">Select Food</label>
 
 		  
-	  <select class="form-control" style= "margin-top:5%;align:center" name="pre1" [(ngModel)]="food">
+	  <select class="form-control" style= "margin-top:5%;text-align:center;margin-left:25%;margin-right:25%;width:50%" name="pre1" [(ngModel)]="food">
 		  
 		<ng-container *ngFor="let x of Menu | myfilter:type" >
 		 
@@ -47,10 +47,10 @@
 	
 		
 	
-	 <label style="margin-top:5%;align:center">Enter New Price</label>
-    <input type="text" name="name" class="form-control" style="margin-top:5%;align:center" [(ngModel)]="price">
+	 <label style="margin-top:5%;font-size:25px;text-align:center;color:white;margin-left:25%;margin-right:25%;width:50%">Enter New Price</label>
+    <input type="text" name="name" class="form-control" style="margin-top:5%;text-align:center;margin-left:25%;margin-right:25%;width:50%" [(ngModel)]="price">
 	</div>
-	<input type="submit" class="btn btn-primary" value="Submit" style="margin-top:5%">
+	<input type="submit" class="btn btn-primary" value="Submit" style="margin-top:5%;text-align:center;margin-left:25%;margin-right:25%;width:50%">
 	</form>
 	<br>
 	

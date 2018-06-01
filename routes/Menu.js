@@ -23,6 +23,17 @@ router.post('/add', (req, res, next) => {
   });
 });
 
+router.post('/getTopRated',(req,res,next)=>{
+let type=req.body.type;
+Menu.GetTopByRating(type,(err,food)=>{
+  if(err){
+    res.json({success: false, msg:'Failed to Load'});
+  } else {
+    res.json({success: true,food:food});
+  }
+});
+});
+
 router.post('/addType', (req, res, next) => {
   let newFood = new type({
    
