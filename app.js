@@ -90,6 +90,12 @@ PythonShell.run('techwiz+collaborative.py',options , function (err) {
   console.log('finished');
 });
 */
+
+var spawn = require("child_process").spawn;
+var process = spawn('python',["./python/techwiz+collaborative.py"] );
+var spawn = require("child_process").spawn;
+var process = spawn('python',["./python/techwiz+content+based.py"] );
+
 //setup socket 
 
 var io = require('socket.io').listen(server);

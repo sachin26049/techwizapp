@@ -74,6 +74,15 @@ module.exports.Sort=function(callback)
 
 
 }
+
+module.exports.GetTopByRating=function(type1,type2,type3,callback)
+{
+  
+  Menu.find({},null,{sort : '-count'},callback);
+
+
+}
+
 module.exports.Update =function(name,newFood,options,callback)
 { 
   var update={
