@@ -85,7 +85,7 @@ for i in users:
     for i in recommended_items:
         x.append(i)
     #print(recommend)
-    recommend['items']=x
+    recommend['items']=x[:5]
     print(recommend)
     json_data = json.dumps(recommend,indent=4)
     db.recommend.insert_one(recommend)
