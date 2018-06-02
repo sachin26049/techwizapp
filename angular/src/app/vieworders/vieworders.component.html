@@ -9,7 +9,7 @@
 </div>
 
 
-<div class="container"  style="border-style : groove;font-size:20px">
+<div class="container"  style="border-style : groove;font-size:20px;background:#FBA100">
 <div class="jumbotron">
 <div class="row">
 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">EMAIL</div>
@@ -35,7 +35,7 @@
 
 </div>
 
-<div class="container " style="font-size:15px">
+<div class="container " style="font-size:18px">
   <div class="row">
     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
       <input type="text" name="mail" placeholder="Enter Email Id"  [(ngModel)]="email" style="margin:5%;width:75%;font-size:65%">
@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<div class="row" style="margin-bottom:2%; border-bottom-style : groove;color:white;font-size:15px" *ngFor="let x of orderz | myfilterEmail:email">
+<div class="row" style="margin-bottom:2%; border-bottom-style : groove;color:white;" *ngFor="let x of orderz | myfilterEmail:email">
   <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
     {{x.email}}
   </div>
