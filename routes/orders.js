@@ -47,6 +47,11 @@ if(err){
     //if(err){ res.json({success: false, msg:'Failed to update count'})}
   });
   }
+  /*var spawn = require("child_process").spawn;
+  var process = spawn('python',["../python/techwiz+collaborative.py"] );
+  var spawn = require("child_process").spawn;
+  console.log("running python");
+  var process = spawn('python',["../python/techwiz+content+based.py"] );*/
 });
 
 router.post('/addtemp',(req,res,next)=>{
