@@ -6,7 +6,7 @@
     <mat-tab  label="Recommended" >
         <mat-accordion>
             <ng-container *ngIf="Recommendations&&flag&&CollabRecommendations&&collabFlag ;">
-          <h3 style="color:#00D800">Recommended Dishes for you!!</h3>
+          <h3 style="color:#00D800">Recommended Dishes Based on similar user!</h3>
           
           <ng-container *ngFor="let y of CollabRecommendations;let i=index" >
               <div *ngIf = "duplicate[i]==0">
@@ -34,7 +34,7 @@
                 </mat-expansion-panel>
               </div>
             </ng-container>
-
+            <h3 style="color:#00D800">Recommended Dishes Based on your taste!</h3>  
           <ng-container *ngFor="let y of Recommendations;let i=index" >
               <div *ngIf = "i<10">
                 <mat-expansion-panel>
@@ -62,6 +62,7 @@
             </ng-container>
           </ng-container>
           <div *ngIf="pre1&&preFlag">
+              <h3 style="color:#00D800">Recommended Dishes Based on your preferences!</h3> 
           <ng-container *ngFor="let y of pre1;let i=index">
               <mat-expansion-panel>
                   <mat-expansion-panel-header>

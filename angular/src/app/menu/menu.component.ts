@@ -93,7 +93,8 @@ constructor(private MS: MenusService,private router: Router,private AS:AuthServi
                 console.log(this.pre1);
                 this.preIndex=new Array(this.pre1.length);
                 this.preduplicate=new Array(this.pre1.length);
-                
+                if(this.Menu)
+                {
                 for(var i=0;i<this.pre1.length;i++)
                 {
                   this.preIndex[i]=this.Menu.findIndex((element)=>{return element.name==this.pre1[i].name}); 
@@ -101,6 +102,7 @@ constructor(private MS: MenusService,private router: Router,private AS:AuthServi
                 console.log(this.preIndex);
                 this.preFlag=1;
                 }
+              }
             });
           }
         });
@@ -160,6 +162,49 @@ constructor(private MS: MenusService,private router: Router,private AS:AuthServi
 
 
               });
+
+              //preferences
+            var user=JSON.parse(this.AS.getUser());
+            this.MS.getTopRated(user.pre1).subscribe(data=>{
+              if(data['success']==true)
+              {
+                this.pre1=data['food'];
+                console.log(this.pre1);
+              
+
+            this.MS.getTopRated(user.pre2).subscribe(data=>{
+              if(data['success']==true)
+              {
+                this.pre2=data['food'];
+                for(var i=0;i<this.pre2.length;i++)
+                this.pre1.push(this.pre2[i]);
+                console.log(this.pre1);
+              }
+            });
+
+            this.MS.getTopRated(user.pre3).subscribe(data=>{
+              if(data['success']==true)
+              {
+                this.pre3=data['food'];
+                for(var i=0;i<this.pre3.length;i++)
+                this.pre1.push(this.pre3[i]);
+
+                console.log(this.pre1);
+                this.preIndex=new Array(this.pre1.length);
+                this.preduplicate=new Array(this.pre1.length);
+                if(this.Menu)
+                {
+                for(var i=0;i<this.pre1.length;i++)
+                {
+                  this.preIndex[i]=this.Menu.findIndex((element)=>{return element.name==this.pre1[i].name}); 
+                }
+                console.log(this.preIndex);
+                this.preFlag=1;
+                }
+              }
+            });
+          }
+        });
               //content-based
               this.MS.getRecommendations().subscribe(data=>{
                 if(data['success'])
