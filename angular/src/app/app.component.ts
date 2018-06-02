@@ -51,7 +51,7 @@ export class AppComponent {
 }
  checkpass1()
  {
-   if(this.pass=="hehe"&&this.user=="chef")
+   if(this.pass1=="hehe"&&this.user1=="chef")
   {
    /* this.flashMessage.show('You are now logged in', {
       cssClass: 'alert-success',
